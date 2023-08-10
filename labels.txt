@@ -1,0 +1,13 @@
+ace
+nine
+six
+four
+eight
+queen
+seven
+king
+ten
+jack
+five
+two
+three

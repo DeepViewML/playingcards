@@ -1,0 +1,23 @@
+type: darknet
+classes:
+- ace
+- nine
+- six
+- four
+- eight
+- queen
+- seven
+- king
+- ten
+- jack
+- five
+- two
+- three
+train:
+  annotations: dataset/labels/train
+  images: dataset/images/train
+  samples: 1328
+validation:
+  annotations: dataset/labels/validate
+  images: dataset/images/validate
+  samples: 148
