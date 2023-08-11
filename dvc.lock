@@ -85,6 +85,15 @@ stages:
   deploy:
     cmd: make deploy
     deps:
+    - path: Makefile
+      hash: md5
+      md5: 423155cfe1c72692f311f1046c9bceba
+      size: 1364
+    - path: dataset
+      hash: md5
+      md5: e1312edd2850b23c1f1f286ae7d99aaf.dir
+      size: 332372378
+      nfiles: 2967
     - path: out/converter.manifest
       hash: md5
       md5: 6deeb2c487fb364c4daba3da8fec440e
@@ -129,5 +138,5 @@ stages:
     outs:
     - path: out/last.rtm
       hash: md5
-      md5: c9de23265fd0762692042d08dbe8dc38
+      md5: 99948d1b79f676e471509db136170758
       size: 5963612

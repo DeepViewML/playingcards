@@ -25,6 +25,8 @@ stages:
     params:
     - params.yaml:
     deps:
+    - Makefile
+    - dataset
     - out/last.h5
     - out/labels.txt
     - out/converter.manifest
