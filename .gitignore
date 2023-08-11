@@ -1,2 +1,9 @@
+*.lic
+*.rtm
+*.h5
+*.log
+*~
+
+/out
 /venv
 /dataset
