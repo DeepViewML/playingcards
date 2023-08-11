@@ -1,0 +1,13 @@
+stages:
+  train:
+    cmd: make train
+    deps:
+    - Makefile
+    - dataset
+    - dataset.yaml
+    - params.yaml
+    outs:
+    - out/best.h5
+    - out/labels.txt
+    - out/last.h5
+    - out/summary.csv
