@@ -5,7 +5,6 @@ REGISTRY = deepview
 MODELPACK = ${REGISTRY}/modelpack:${VERSION}
 CONVERTER = deepview/converter:2.5.22
 SESSION = out
-HOSTID = 00:00:00:00:00:00
 UID = $(shell id -u)
 GID = $(shell id -g)
 
