@@ -9,7 +9,7 @@ weights: coco
 objects_size: large
 letterbox: false
 batch_size: 10
-epochs: 5
+epochs: 100
 initial_lr: 0.001
 warmup_epochs: 2
 warmup_lr: 1.0e-05

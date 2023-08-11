@@ -32,7 +32,7 @@ stages:
         batch_size: 10
         display: 10
         encoding_iou: 0.3
-        epochs: 5
+        epochs: 100
         exponential_decay: 0
         initial_lr: 0.001
         iou_threshold: 0.5
@@ -52,7 +52,7 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: c869faee0889cd1bc00fa7702d4d535f
+      md5: a955e4120767c2d9b04cd0dc2951176c
       size: 24000064
     - path: out/labels.txt
       hash: md5
@@ -60,12 +60,12 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 2054d106531990730a29ccb73a1dabac
+      md5: 77e5c6a37fcdca1d38ede37a800a66a0
       size: 24000064
     - path: out/summary.csv
       hash: md5
-      md5: 6e0437ad67ffefcd440aa0ebc698c69a
-      size: 932
+      md5: 28787c7e95a5b4e2ba55291690e390fe
+      size: 21671
   manifest:
     cmd: make manifest
     deps:
@@ -104,7 +104,7 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 2054d106531990730a29ccb73a1dabac
+      md5: 77e5c6a37fcdca1d38ede37a800a66a0
       size: 24000064
     params:
       params.yaml:
@@ -118,7 +118,7 @@ stages:
         batch_size: 10
         display: 10
         encoding_iou: 0.3
-        epochs: 5
+        epochs: 100
         exponential_decay: 0
         initial_lr: 0.001
         iou_threshold: 0.5
@@ -138,5 +138,5 @@ stages:
     outs:
     - path: out/last.rtm
       hash: md5
-      md5: 99948d1b79f676e471509db136170758
-      size: 5963612
+      md5: 4fe9a0b99c9b83d8ad7d75025e59f953
+      size: 5963972
