@@ -18,12 +18,15 @@ We provide all the configurations and datasets to re-train this model, simply fo
 ## Requirements
 
 - ModelPack License, contact info@au-zone.com to request a trial license.
-- Python 3.8 or newer with a virtual environment created.
-- Python dependencies from requirements.txt installed into the virtual environment.
+- Environment variable HOSTID configured according to the license requirements.
+- DVC installed into system or virtual environment.
+- Docker.
 
 ## Instructions
 
 Our example ModelPack training pipelines are built using DVC to manage datasets and parameters.  Stages are provided for training, validation, and optimization to a quantized DeepViewRT model ready for deployment to the embedded edge device.
+
+To reproduce the pipeline from the current commit you can run the `dvc repro` command.  If you wish to experiment with parameters then `dvc exp run` is what you're looking for.  Please refer to the DVC User Manual for further details.
 
 # License
 
