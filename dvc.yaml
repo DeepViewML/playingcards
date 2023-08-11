@@ -1,4 +1,11 @@
 stages:
+  manifest:
+    cmd: make manifest
+    deps:
+    - Makefile
+    outs:
+    - out/converter.manifest
+    - out/modelpack.manifest
   train:
     cmd: make train
     params:
@@ -7,8 +14,19 @@ stages:
     - Makefile
     - dataset
     - dataset.yaml
+    - out/modelpack.manifest
     outs:
     - out/best.h5
     - out/labels.txt
     - out/last.h5
     - out/summary.csv
+  deploy:
+    cmd: make deploy
+    params:
+    - params.yaml:
+    deps:
+    - out/last.h5
+    - out/labels.txt
+    - out/converter.manifest
+    outs:
+    - out/last.rtm
