@@ -18,7 +18,7 @@ pull:
 	docker pull ${CONVERTER}
 
 train: manifest
-	docker run --rm -it --gpus=all \
+	docker run --rm --gpus=all \
 		-u ${UID}:${GID} \
 		--mac-address ${HOSTID} \
 		-v ${CURDIR}:/work \
