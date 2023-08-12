@@ -1,16 +1,15 @@
-name: Main
+name: Pull Request
 
-on:
-    push:
-        branches: [ "main" ]
-        tags:
-        - "v*.*"
+on: pull_request
 
 jobs:
     train:
         runs-on: mltrain
         env:
             HOSTID: ${{ secrets.MODELPACK_HOSTID }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
         steps:
         - uses: actions/checkout@v3
         - name: modelpack license
@@ -23,10 +22,6 @@ jobs:
         - name: dvc repro
           run: dvc repro
         - name: dvc push
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
           run: dvc push -r private
         - uses: stefanzweifel/git-auto-commit-action@v4
           with:
