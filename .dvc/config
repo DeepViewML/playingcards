@@ -2,6 +2,5 @@
     remote = public
 ['remote "private"']
     url = s3://deepviewml-datasets/playingcards
-    profile = deepviewml-admin
 ['remote "public"']
     url = https://datasets.deepviewml.com/playingcards
