@@ -11,24 +11,26 @@ stages:
     params:
     - params.yaml:
     deps:
+    - out/modelpack.manifest
     - Makefile
     - dataset
     - dataset.yaml
-    - out/modelpack.manifest
     outs:
-    - out/best.h5
+    - out/config.json
     - out/labels.txt
     - out/last.h5
-    - out/summary.csv
+    - out/best.h5
   deploy:
     cmd: make deploy
     params:
     - params.yaml:
     deps:
+    - out/converter.manifest
     - Makefile
     - dataset
-    - out/last.h5
     - out/labels.txt
-    - out/converter.manifest
+    - out/last.h5
+    - out/best.h5
     outs:
     - out/last.rtm
+    - out/best.rtm

@@ -5,8 +5,8 @@ stages:
     deps:
     - path: Makefile
       hash: md5
-      md5: 423155cfe1c72692f311f1046c9bceba
-      size: 1364
+      md5: 0a9262c611b472c02fcd8484571386ea
+      size: 1342
     - path: dataset
       hash: md5
       md5: e1312edd2850b23c1f1f286ae7d99aaf.dir
@@ -18,8 +18,8 @@ stages:
       size: 327
     - path: out/modelpack.manifest
       hash: md5
-      md5: 46c0680ef2c4e638703835541bf67a0b
-      size: 8062
+      md5: 069d2d03159d46f2f61a4c03118dee49
+      size: 7427
     params:
       params.yaml:
         ChannelShuffle: 0.01
@@ -32,8 +32,9 @@ stages:
         batch_size: 10
         display: 10
         encoding_iou: 0.3
-        epochs: 100
+        epochs: 10
         exponential_decay: 0
+        focus: false
         initial_lr: 0.001
         iou_threshold: 0.5
         letterbox: false
@@ -52,27 +53,27 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: a955e4120767c2d9b04cd0dc2951176c
-      size: 24000064
+      md5: 998d6769ea62828bf429de01dc739cab
+      size: 24000056
+    - path: out/config.json
+      hash: md5
+      md5: 881d3f986bfaba41ea9ddb462c5630e4
+      size: 1664
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 77e5c6a37fcdca1d38ede37a800a66a0
-      size: 24000064
-    - path: out/summary.csv
-      hash: md5
-      md5: 28787c7e95a5b4e2ba55291690e390fe
-      size: 21671
+      md5: 53f7d201228def660c16a052befe6bbd
+      size: 24000056
   manifest:
     cmd: make manifest
     deps:
     - path: Makefile
       hash: md5
-      md5: 423155cfe1c72692f311f1046c9bceba
-      size: 1364
+      md5: 0a9262c611b472c02fcd8484571386ea
+      size: 1342
     outs:
     - path: out/converter.manifest
       hash: md5
@@ -80,20 +81,24 @@ stages:
       size: 6951
     - path: out/modelpack.manifest
       hash: md5
-      md5: 46c0680ef2c4e638703835541bf67a0b
-      size: 8062
+      md5: 069d2d03159d46f2f61a4c03118dee49
+      size: 7427
   deploy:
     cmd: make deploy
     deps:
     - path: Makefile
       hash: md5
-      md5: 423155cfe1c72692f311f1046c9bceba
-      size: 1364
+      md5: 0a9262c611b472c02fcd8484571386ea
+      size: 1342
     - path: dataset
       hash: md5
       md5: e1312edd2850b23c1f1f286ae7d99aaf.dir
       size: 332372378
       nfiles: 2967
+    - path: out/best.h5
+      hash: md5
+      md5: c32b1370af10d3f687976de42a0df558
+      size: 24000056
     - path: out/converter.manifest
       hash: md5
       md5: 6deeb2c487fb364c4daba3da8fec440e
@@ -104,8 +109,8 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 77e5c6a37fcdca1d38ede37a800a66a0
-      size: 24000064
+      md5: 235cb890bd2845e2f54d00742a1b73d1
+      size: 24000056
     params:
       params.yaml:
         ChannelShuffle: 0.01
@@ -118,8 +123,9 @@ stages:
         batch_size: 10
         display: 10
         encoding_iou: 0.3
-        epochs: 100
+        epochs: 3
         exponential_decay: 0
+        focus: false
         initial_lr: 0.001
         iou_threshold: 0.5
         letterbox: false
@@ -136,7 +142,11 @@ stages:
         weighted_objectness: 1.0
         weights: coco
     outs:
+    - path: out/best.rtm
+      hash: md5
+      md5: 5e1c79092160f7af75d019fdcc44342f
+      size: 5963360
     - path: out/last.rtm
       hash: md5
-      md5: 4fe9a0b99c9b83d8ad7d75025e59f953
-      size: 5963972
+      md5: 6d7c05035e77bea315106e28b958f9c2
+      size: 5963360
