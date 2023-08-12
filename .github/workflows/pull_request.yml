@@ -30,4 +30,4 @@ jobs:
         - name: publish report
           run: |
             echo repository ${{ github.event.repository.name }}
-            echo commit hash ${{ env.GITHUB_SHA }}
+            echo commit hash ${{ github.sha }}
