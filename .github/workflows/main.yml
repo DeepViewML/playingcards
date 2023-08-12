@@ -11,8 +11,7 @@ jobs:
         runs-on: mltrain
         steps:
         - uses: actions/checkout@v3
-        - uses: iterative/setup-dvc@v1
-        - name: Install Flutter SDK
+        - name: modelpack license
           uses: mobiledevops/secret-to-file-action@v1
           with:
             base64-encoded-secret: ${{ secrets.MODELPACK_LICENSE }}
