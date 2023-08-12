@@ -2,7 +2,7 @@ name: Main
 
 on:
     push:
-        branches: [ "webvision-cpp" ]
+        branches: [ "main" ]
         tags:
         - "v*.*"
 
