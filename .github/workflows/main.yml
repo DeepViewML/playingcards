@@ -1,0 +1,28 @@
+name: Main
+
+on:
+    push:
+        branches: [ "webvision-cpp" ]
+        tags:
+        - "v*.*"
+
+jobs:
+    train:
+        runs-on: mltrain
+        steps:
+        - uses: actions/checkout@v3
+        - uses: iterative/setup-dvc@v1
+        - name: Install Flutter SDK
+          uses: mobiledevops/secret-to-file-action@v1
+          with:
+            base64-encoded-secret: ${{ secrets.MODELPACK_LICENSE }}
+            filename: "modelpack.lic"
+        - name: dvc pull
+          run: dvc pull
+        - name: dvc repro
+          env:
+            MODELPACK_HOSTID: ${{ secrets.MODELPACK_HOSTID }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+          run: dvc repro
