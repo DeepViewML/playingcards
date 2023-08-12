@@ -1,9 +1,10 @@
 MODELPACK ?= deepview/modelpack:2.0.14
-CONVERTER ?= deepview/converter:2.5.22
+CONVERTER ?= deepview/converter:2.5.23
 UID ?= $(shell id -u)
 GID ?= $(shell id -g)
 
-INPUT_SHAPE ?= "1,$(shell docker run --rm -it -v ${CURDIR}:/workdir mikefarah/yq -r .shape params.yaml)"
+INPUT_SHAPE ?= "1,$(shell docker run --rm -i -v ${CURDIR}:/workdir mikefarah/yq -r .shape params.yaml)"
+DOCKER_LABELS := docker run --rm -i imega/jq .[0].Config.Labels
 
 all: help
 
@@ -48,5 +49,5 @@ deploy: out/last.rtm out/best.rtm
 
 manifest: pull
 	mkdir -p out
-	docker inspect ${CONVERTER} > out/converter.manifest
-	docker inspect ${MODELPACK} > out/modelpack.manifest
+	docker inspect ${CONVERTER} | ${DOCKER_LABELS} > out/converter.manifest
+	docker inspect ${MODELPACK} | ${DOCKER_LABELS} > out/modelpack.manifest
