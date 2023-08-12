@@ -9,6 +9,8 @@ on:
 jobs:
     train:
         runs-on: mltrain
+        env:
+            MODELPACK_HOSTID: ${{ secrets.MODELPACK_HOSTID }}
         steps:
         - uses: actions/checkout@v3
         - name: modelpack license
@@ -19,8 +21,6 @@ jobs:
         - name: dvc pull
           run: dvc pull
         - name: dvc repro
-          env:
-            MODELPACK_HOSTID: ${{ secrets.MODELPACK_HOSTID }}
           run: dvc repro
         - name: dvc push
           env:
