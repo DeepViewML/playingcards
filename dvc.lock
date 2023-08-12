@@ -50,13 +50,22 @@ stages:
         weighted_objectness: 1.0
         weights: coco
     outs:
+    - path: dvclive/report.md
+      hash: md5
+      md5: 48de6e4aa5530fffad12796d180938a3
+      size: 3497
+    - path: dvclive/static
+      hash: md5
+      md5: dc44b27f22a86c7dc174e33cfec4d5f1.dir
+      size: 57366
+      nfiles: 4
     - path: out/best.h5
       hash: md5
-      md5: 3c3b721dfaa9e95c348274fe7c865b28
+      md5: eca2f8c49a819372eecb93fb22fb061c
       size: 24000056
     - path: out/config.json
       hash: md5
-      md5: 91a9c2ff49afbe8db87e0267d5e328a2
+      md5: 8337151b9dee69f581da4592b3b6913d
       size: 1662
     - path: out/labels.txt
       hash: md5
@@ -64,7 +73,7 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 3079038a2be75785613b6ee9c41f2ac5
+      md5: 2b6eba6d1d13941810a8c519e731e2aa
       size: 24000056
   manifest:
     cmd: make manifest
@@ -96,7 +105,7 @@ stages:
       nfiles: 2967
     - path: out/best.h5
       hash: md5
-      md5: 3c3b721dfaa9e95c348274fe7c865b28
+      md5: eca2f8c49a819372eecb93fb22fb061c
       size: 24000056
     - path: out/converter.manifest
       hash: md5
@@ -108,7 +117,7 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 3079038a2be75785613b6ee9c41f2ac5
+      md5: 2b6eba6d1d13941810a8c519e731e2aa
       size: 24000056
     params:
       params.yaml:

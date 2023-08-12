@@ -20,6 +20,8 @@ stages:
     - out/labels.txt
     - out/last.h5
     - out/best.h5
+    - dvclive/static
+    - dvclive/report.md
   deploy:
     cmd: make deploy
     params:
