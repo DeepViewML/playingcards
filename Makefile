@@ -46,7 +46,7 @@ deploy: out/last.rtm out/best.rtm
 		--output-type int8 \
 		$< $@
 
-manifest:
+manifest: pull
 	mkdir -p out
 	docker inspect ${CONVERTER} > out/converter.manifest
 	docker inspect ${MODELPACK} > out/modelpack.manifest
