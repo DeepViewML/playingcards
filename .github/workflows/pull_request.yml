@@ -31,4 +31,4 @@ jobs:
           run: |
             aws s3 cp dvclive/report.md s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}
             aws s3 cp --recursive dvclive/static s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/static
-            sed 's,!\[static/,!\[https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' dvclive/report.md > $GITHUB_STEP_SUMMARY
+            sed 's,(static/,(https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' dvclive/report.md > $GITHUB_STEP_SUMMARY
