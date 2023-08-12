@@ -10,7 +10,7 @@ jobs:
     train:
         runs-on: mltrain
         env:
-            MODELPACK_HOSTID: ${{ secrets.MODELPACK_HOSTID }}
+            HOSTID: ${{ secrets.MODELPACK_HOSTID }}
         steps:
         - uses: actions/checkout@v3
         - name: modelpack license
