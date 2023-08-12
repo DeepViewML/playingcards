@@ -27,3 +27,7 @@ jobs:
           with:
             commit_message: Synchronizing DVC from GitHub Action
             file_pattern: 'dvc.lock'
+        - name: publish report
+          run: |
+            echo repository ${{ github.event.repository.name }}
+            echo commit hash ${{ env.GITHUB_SHA }}
