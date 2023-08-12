@@ -28,7 +28,7 @@ train: manifest
 		--license=modelpack.lic \
 		--load=params.yaml \
 		--dataset=dataset.yaml \
-		--dvclive=out
+		--dvclive=dvclive
 
 deploy: out/last.rtm out/best.rtm
 
