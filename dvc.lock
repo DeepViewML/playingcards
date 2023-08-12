@@ -5,8 +5,8 @@ stages:
     deps:
     - path: Makefile
       hash: md5
-      md5: 4627305b7313040d09ab09f18352871a
-      size: 1347
+      md5: bd87add4f2290508c1fd564f38733e64
+      size: 1448
     - path: dataset
       hash: md5
       md5: e1312edd2850b23c1f1f286ae7d99aaf.dir
@@ -18,8 +18,8 @@ stages:
       size: 327
     - path: out/modelpack.manifest
       hash: md5
-      md5: 202f573558f58e5520be241c9722187b
-      size: 7913
+      md5: df431e21966cbe631f6b485b7bc01586
+      size: 424
     params:
       params.yaml:
         ChannelShuffle: 0.01
@@ -52,11 +52,11 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: c474b8ddecbfced848048aac7876f146
+      md5: 3c3b721dfaa9e95c348274fe7c865b28
       size: 24000056
     - path: out/config.json
       hash: md5
-      md5: 8d644837e12260d034afbdbf2d2d8e2a
+      md5: 91a9c2ff49afbe8db87e0267d5e328a2
       size: 1662
     - path: out/labels.txt
       hash: md5
@@ -64,31 +64,31 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 976e8ef4cbf27a90f4a172d6409faa8c
+      md5: 3079038a2be75785613b6ee9c41f2ac5
       size: 24000056
   manifest:
     cmd: make manifest
     deps:
     - path: Makefile
       hash: md5
-      md5: 4627305b7313040d09ab09f18352871a
-      size: 1347
+      md5: bd87add4f2290508c1fd564f38733e64
+      size: 1448
     outs:
     - path: out/converter.manifest
       hash: md5
-      md5: e5d21204a83e1c42543836d8dca0e29e
-      size: 6910
+      md5: cbcd2e89b0d2bba7d8ac267c9854f8d5
+      size: 327
     - path: out/modelpack.manifest
       hash: md5
-      md5: 202f573558f58e5520be241c9722187b
-      size: 7913
+      md5: df431e21966cbe631f6b485b7bc01586
+      size: 424
   deploy:
     cmd: make deploy
     deps:
     - path: Makefile
       hash: md5
-      md5: 4627305b7313040d09ab09f18352871a
-      size: 1347
+      md5: bd87add4f2290508c1fd564f38733e64
+      size: 1448
     - path: dataset
       hash: md5
       md5: e1312edd2850b23c1f1f286ae7d99aaf.dir
@@ -96,19 +96,19 @@ stages:
       nfiles: 2967
     - path: out/best.h5
       hash: md5
-      md5: c474b8ddecbfced848048aac7876f146
+      md5: 3c3b721dfaa9e95c348274fe7c865b28
       size: 24000056
     - path: out/converter.manifest
       hash: md5
-      md5: e5d21204a83e1c42543836d8dca0e29e
-      size: 6910
+      md5: cbcd2e89b0d2bba7d8ac267c9854f8d5
+      size: 327
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 976e8ef4cbf27a90f4a172d6409faa8c
+      md5: 3079038a2be75785613b6ee9c41f2ac5
       size: 24000056
     params:
       params.yaml:
