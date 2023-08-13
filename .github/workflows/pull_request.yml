@@ -35,6 +35,6 @@ jobs:
             sed 's,(static/,(https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' > $GITHUB_STEP_SUMMARY
         - uses: mshick/add-pr-comment@v2
           with:
-            message-path: $GITHUB_STEP_SUMMARY
+            message-path: ${{ github.action.GITHUB_STEP_SUMMARY }}
             message-id: 'dvc-report'
             refresh-message-position: true
