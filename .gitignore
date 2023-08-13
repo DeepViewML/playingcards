@@ -4,6 +4,10 @@
 *.log
 *~
 
+hostid.sh
+
+/.vscode
+
 /report.md
 
 /out
