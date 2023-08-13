@@ -9,7 +9,7 @@ focus: false
 weights: coco
 objects_size: large
 letterbox: false
-batch_size: 100
+batch_size: 25
 epochs: 1
 initial_lr: 0.01
 warmup_epochs: 2
