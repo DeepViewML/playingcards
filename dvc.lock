@@ -33,7 +33,7 @@ stages:
         RandomFog: 0.01
         ShiftScaleRotate: 0.3
         ToGray: 0.2
-        batch_size: 100
+        batch_size: 25
         encoding_iou: 0.3
         epochs: 1
         exponential_decay: 0
@@ -60,8 +60,8 @@ stages:
       size: 338
     - path: dvclive/report.md
       hash: md5
-      md5: f05b76905fb4a08162b72f160c7addd8
-      size: 3500
+      md5: 8ebb9c7aa3cf2fdb280099a9a66ff0e6
+      size: 3503
     - path: dvclive/static
       hash: md5
       md5: 265fbc42cf897391ba978bdd9b8f8972.dir
@@ -69,11 +69,11 @@ stages:
       nfiles: 4
     - path: out/best.h5
       hash: md5
-      md5: 925e642dc537c7e28aeb7ea0792740ff
-      size: 24000056
+      md5: ce32b132ad09c598d8a811365ae61cc3
+      size: 24000064
     - path: out/config.json
       hash: md5
-      md5: ed718b602823818b69424d65ce8289d1
+      md5: 2095c09a3b58d5699c0fe89b504d1495
       size: 1664
     - path: out/labels.txt
       hash: md5
@@ -81,8 +81,8 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: dfdee14a9d1cda3a9ff24d775fff53eb
-      size: 24000056
+      md5: 57d4114dbd64ae5b738d7aa92cc6a20c
+      size: 24000064
   manifest:
     cmd: make manifest
     deps:
@@ -117,16 +117,16 @@ stages:
       size: 327
     - path: out/best.h5
       hash: md5
-      md5: 925e642dc537c7e28aeb7ea0792740ff
-      size: 24000056
+      md5: ce32b132ad09c598d8a811365ae61cc3
+      size: 24000064
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: dfdee14a9d1cda3a9ff24d775fff53eb
-      size: 24000056
+      md5: 57d4114dbd64ae5b738d7aa92cc6a20c
+      size: 24000064
     params:
       params.yaml:
         ChannelShuffle: 0.01
@@ -136,7 +136,7 @@ stages:
         RandomFog: 0.01
         ShiftScaleRotate: 0.3
         ToGray: 0.2
-        batch_size: 100
+        batch_size: 25
         encoding_iou: 0.3
         epochs: 1
         exponential_decay: 0
