@@ -10,6 +10,8 @@ stages:
     cmd: make train
     params:
     - params.yaml:
+    metrics:
+    - dvclive/metrics.json 
     deps:
     - dvclive/modelpack.json
     - dvclive/converter.json
