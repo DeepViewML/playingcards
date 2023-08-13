@@ -53,20 +53,15 @@ stages:
         weighted_localization: 1.0
         weighted_objectness: 1.0
         weights: coco
-      dvclive/modelpack.json:
-        maintainer: Au-Zone Technologies
-        org.opencontainers.image.build: '1'
-        org.opencontainers.image.revision: 6ac75a7
-        org.opencontainers.image.title: DeepView ModelPack
-        org.opencontainers.image.url: 
-          https://support.deepviewml.com/hc/en-us/articles/11630435764621-ModelPack-with-Docker
-        org.opencontainers.image.vendor: Au-Zone Technologies
-        org.opencontainers.image.version: 2.0.14
     outs:
+    - path: dvclive/metrics.json
+      hash: md5
+      md5: e49a13d691b3e577772efa3e2c2868a9
+      size: 338
     - path: dvclive/report.md
       hash: md5
-      md5: 9258a118ae479b6446f112a1c1136efe
-      size: 3497
+      md5: f05b76905fb4a08162b72f160c7addd8
+      size: 3500
     - path: dvclive/static
       hash: md5
       md5: 265fbc42cf897391ba978bdd9b8f8972.dir
@@ -74,19 +69,19 @@ stages:
       nfiles: 4
     - path: out/best.h5
       hash: md5
-      md5: 2cc4018de0e3db5095358eb84e02210a
+      md5: 925e642dc537c7e28aeb7ea0792740ff
       size: 24000056
     - path: out/config.json
       hash: md5
-      md5: afdc91103113486985e539919316862f
-      size: 1663
+      md5: ed718b602823818b69424d65ce8289d1
+      size: 1664
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 820d6c76af6544be0467a1e3074b51d5
+      md5: dfdee14a9d1cda3a9ff24d775fff53eb
       size: 24000056
   manifest:
     cmd: make manifest
@@ -122,7 +117,7 @@ stages:
       size: 327
     - path: out/best.h5
       hash: md5
-      md5: 2cc4018de0e3db5095358eb84e02210a
+      md5: 925e642dc537c7e28aeb7ea0792740ff
       size: 24000056
     - path: out/labels.txt
       hash: md5
@@ -130,7 +125,7 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 820d6c76af6544be0467a1e3074b51d5
+      md5: dfdee14a9d1cda3a9ff24d775fff53eb
       size: 24000056
     params:
       params.yaml:
@@ -161,13 +156,6 @@ stages:
         weighted_localization: 1.0
         weighted_objectness: 1.0
         weights: coco
-      dvclive/converter.json:
-        org.opencontainers.image.build: ''
-        org.opencontainers.image.revision: ''
-        org.opencontainers.image.source: https://bitbucket.org/au-zone/converter
-        org.opencontainers.image.title: DeepView Converter
-        org.opencontainers.image.vendor: Au-Zone Technologies
-        org.opencontainers.image.version: ''
     outs:
     - path: out/best.rtm
       hash: md5
