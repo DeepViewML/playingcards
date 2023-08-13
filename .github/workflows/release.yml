@@ -25,8 +25,7 @@ jobs:
           cat report.md > $GITHUB_STEP_SUMMARY
       - uses: softprops/action-gh-release@v1
         with:
-          body_path: |
-            report.md
+          body_path: report.md
           files: |
             out/*.h5
             out/*.rtm
