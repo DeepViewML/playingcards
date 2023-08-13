@@ -35,7 +35,7 @@ stages:
         ToGray: 0.2
         batch_size: 100
         encoding_iou: 0.3
-        epochs: 10
+        epochs: 20
         exponential_decay: 0
         focus: false
         initial_lr: 0.01
@@ -56,24 +56,24 @@ stages:
     outs:
     - path: dvclive/metrics.json
       hash: md5
-      md5: 132ed5c223d662a32f3caf025a5bbdc2
-      size: 519
+      md5: 92d7f6ff138102735e14ecb50d968e00
+      size: 506
     - path: dvclive/report.md
       hash: md5
-      md5: abfff656e81e58f80833f89b949e6ceb
+      md5: 7b025a50117d42863ad2ced091d964ee
       size: 3497
     - path: dvclive/static
       hash: md5
-      md5: e0865d12ca52fb137b3e6fe59b0dc249.dir
-      size: 82620
+      md5: e392a3727339a4c01836ed88f067de54.dir
+      size: 88264
       nfiles: 4
     - path: out/best.h5
       hash: md5
-      md5: 9dea06d9d0abb90a42508b9d463c263e
+      md5: 60068b5497a4e6ba05c48019cb5fb646
       size: 24000056
     - path: out/config.json
       hash: md5
-      md5: 7e51a61b2d42ea6b97600683d1a83c29
+      md5: a90d260a2f2ee8ec4df7af156c9ca8bb
       size: 1664
     - path: out/labels.txt
       hash: md5
@@ -81,7 +81,7 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 9b70cd062983f2f8e3e0c1b28d9387f4
+      md5: d44d84a0d3ed6ea20a3f385c4526313e
       size: 24000056
   manifest:
     cmd: make manifest
@@ -117,7 +117,7 @@ stages:
       size: 327
     - path: out/best.h5
       hash: md5
-      md5: 9dea06d9d0abb90a42508b9d463c263e
+      md5: 60068b5497a4e6ba05c48019cb5fb646
       size: 24000056
     - path: out/labels.txt
       hash: md5
@@ -125,7 +125,7 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 9b70cd062983f2f8e3e0c1b28d9387f4
+      md5: d44d84a0d3ed6ea20a3f385c4526313e
       size: 24000056
     params:
       params.yaml:
@@ -138,7 +138,7 @@ stages:
         ToGray: 0.2
         batch_size: 100
         encoding_iou: 0.3
-        epochs: 10
+        epochs: 20
         exponential_decay: 0
         focus: false
         initial_lr: 0.01
