@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - "v*.*"
+
+jobs:
+  release:
+    runs-on: mltrain
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: dvc pull
+        run: dvc pull
+      - name: report
+        run: |
+          aws s3 cp dvclive/report.md s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/report.md
+          aws s3 cp --recursive dvclive/static s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/static
+          sed ':l s/\(([^ )]*\)[ ]/\1%20/;tl' dvclive/report.md | \
+          sed 's,(static/,(https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' > report.md
+          cat report.md > $GITHUB_STEP_SUMMARY
+      - uses: softprops/action-gh-release@v1
+        with:
+          body_path: |
+            report.md
+          files: |
+            out/*.h5
+            out/*.rtm

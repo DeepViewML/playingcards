@@ -3,44 +3,44 @@ name: Pull Request
 on: pull_request
 
 jobs:
-    train:
-        runs-on: mltrain
-        env:
-            HOSTID: ${{ secrets.MODELPACK_HOSTID }}
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
-        steps:
-        - uses: actions/checkout@v3
-        - name: modelpack license
-          uses: mobiledevops/secret-to-file-action@v1
-          with:
-            base64-encoded-secret: ${{ secrets.MODELPACK_LICENSE }}
-            filename: "modelpack.lic"
-        - name: dvc pull
-          run: dvc pull
-        - name: dvc repro
-          run: dvc repro
-        - name: dvc push
-          run: dvc push -r private
-        - uses: stefanzweifel/git-auto-commit-action@v4
-          with:
-            commit_message: Synchronizing DVC from GitHub Action
-            file_pattern: 'dvc.lock'
-        - name: publish report
-          run: |
-            aws s3 cp dvclive/report.md s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/report.md
-            aws s3 cp --recursive dvclive/static s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/static
-            sed ':l s/\(([^ )]*\)[ ]/\1%20/;tl' dvclive/report.md | \
-            sed 's,(static/,(https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' > report.md
-            cat report.md > $GITHUB_STEP_SUMMARY
-        - name: debug report
-          run: |
-            ls report.md
-            cat report.md
-        - uses: mshick/add-pr-comment@v2
-          with:
-            message-path: |
-              report.md
-            message-id: 'dvc-report'
-            refresh-message-position: true
+  train:
+    runs-on: mltrain
+    env:
+      HOSTID: ${{ secrets.MODELPACK_HOSTID }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: modelpack license
+      uses: mobiledevops/secret-to-file-action@v1
+      with:
+        base64-encoded-secret: ${{ secrets.MODELPACK_LICENSE }}
+        filename: "modelpack.lic"
+    - name: dvc pull
+      run: dvc pull
+    - name: dvc repro
+      run: dvc repro
+    - name: dvc push
+      run: dvc push -r private
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Synchronizing DVC from GitHub Action
+        file_pattern: 'dvc.lock'
+    - name: publish report
+      run: |
+        aws s3 cp dvclive/report.md s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/report.md
+        aws s3 cp --recursive dvclive/static s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/static
+        sed ':l s/\(([^ )]*\)[ ]/\1%20/;tl' dvclive/report.md | \
+        sed 's,(static/,(https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' > report.md
+        cat report.md > $GITHUB_STEP_SUMMARY
+    - name: debug report
+      run: |
+        ls report.md
+        cat report.md
+    - uses: mshick/add-pr-comment@v2
+      with:
+        message-path: |
+          report.md
+        message-id: 'dvc-report'
+        refresh-message-position: true
