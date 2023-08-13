@@ -4,14 +4,16 @@ stages:
     deps:
     - Makefile
     outs:
-    - out/converter.manifest
-    - out/modelpack.manifest
+    - dvclive/modelpack.json
+    - dvclive/converter.json
   train:
     cmd: make train
     params:
     - params.yaml:
+    - dvclive/modelpack.json:
     deps:
-    - out/modelpack.manifest
+    - dvclive/modelpack.json
+    - dvclive/converter.json
     - Makefile
     - dataset
     - dataset.yaml
@@ -26,8 +28,9 @@ stages:
     cmd: make deploy
     params:
     - params.yaml:
+    - dvclive/converter.json:
     deps:
-    - out/converter.manifest
+    - dvclive/converter.json
     - Makefile
     - dataset
     - out/labels.txt

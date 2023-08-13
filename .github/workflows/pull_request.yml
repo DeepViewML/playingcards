@@ -33,3 +33,8 @@ jobs:
             aws s3 cp --recursive dvclive/static s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/static
             sed ':l s/\(([^ )]*\)[ ]/\1%20/;tl' dvclive/report.md | \
             sed 's,(static/,(https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' > $GITHUB_STEP_SUMMARY
+        - uses: mshick/add-pr-comment@v2
+          with:
+            message-path: $GITHUB_STEP_SUMMARY
+            message-id: 'dvc-report'
+            refresh-message-position: true

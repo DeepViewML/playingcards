@@ -9,17 +9,12 @@ DOCKER_LABELS := docker run --rm -i imega/jq .[0].Config.Labels
 all: help
 
 help:
-	@echo "usage: make <pull | train | deploy>"
-	@echo "  pull:      pull latest images for ${MODELPACK} and ${CONVERTER}"
+	@echo "usage: make <train | deploy>"
 	@echo "  train:     runs the training pipeline producing the keras checkpoint"
 	@echo "  deploy:    deploys the model to an optimized deepviewrt model"
 
-pull:
-	docker pull ${MODELPACK}
-	docker pull ${CONVERTER}
-
 train: manifest
-	docker run --rm --gpus=all \
+	docker run --rm -i --gpus=all \
 		-u ${UID}:${GID} \
 		--mac-address ${HOSTID} \
 		-v ${CURDIR}:/work \
@@ -33,7 +28,7 @@ train: manifest
 
 deploy: out/last.rtm out/best.rtm
 
-%.rtm: %.h5
+%.rtm: %.h5 converter
 	docker run --rm -it \
 		-u ${UID}:${GID} \
 		-v ${CURDIR}:/work \
@@ -47,7 +42,15 @@ deploy: out/last.rtm out/best.rtm
 		--output-type int8 \
 		$< $@
 
-manifest: pull
-	mkdir -p out
-	docker inspect ${CONVERTER} | ${DOCKER_LABELS} > out/converter.manifest
-	docker inspect ${MODELPACK} | ${DOCKER_LABELS} > out/modelpack.manifest
+modelpack: out
+	@docker pull ${MODELPACK}
+	@docker inspect ${MODELPACK} | ${DOCKER_LABELS} > dvclive/modelpack.json
+
+converter: out
+	@docker pull ${CONVERTER}
+	@docker inspect ${CONVERTER} | ${DOCKER_LABELS} > dvclive/converter.json
+
+manifest: modelpack converter
+
+out:
+	@mkdir -p out
