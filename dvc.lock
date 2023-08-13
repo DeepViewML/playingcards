@@ -5,8 +5,8 @@ stages:
     deps:
     - path: Makefile
       hash: md5
-      md5: 4627305b7313040d09ab09f18352871a
-      size: 1347
+      md5: 83b6647023c4c009c2e48d0710d45ca1
+      size: 1430
     - path: dataset
       hash: md5
       md5: e1312edd2850b23c1f1f286ae7d99aaf.dir
@@ -16,10 +16,14 @@ stages:
       hash: md5
       md5: d4ac543abadc7eaf1b8276b9959e0990
       size: 327
-    - path: out/modelpack.manifest
+    - path: dvclive/converter.json
       hash: md5
-      md5: 202f573558f58e5520be241c9722187b
-      size: 7913
+      md5: cbcd2e89b0d2bba7d8ac267c9854f8d5
+      size: 327
+    - path: dvclive/modelpack.json
+      hash: md5
+      md5: df431e21966cbe631f6b485b7bc01586
+      size: 424
     params:
       params.yaml:
         ChannelShuffle: 0.01
@@ -29,12 +33,12 @@ stages:
         RandomFog: 0.01
         ShiftScaleRotate: 0.3
         ToGray: 0.2
-        batch_size: 10
+        batch_size: 100
         encoding_iou: 0.3
-        epochs: 2
+        epochs: 100
         exponential_decay: 0
-        focus: false
-        initial_lr: 0.001
+        focus: true
+        initial_lr: 0.01
         iou_threshold: 0.5
         letterbox: false
         objects_size: large
@@ -44,72 +48,90 @@ stages:
         task: detection
         use_power_decoder: true
         warmup_epochs: 2
-        warmup_lr: 1e-05
+        warmup_lr: 0.0001
         weighted_classification: 1.0
         weighted_localization: 1.0
         weighted_objectness: 1.0
         weights: coco
+      dvclive/modelpack.json:
+        maintainer: Au-Zone Technologies
+        org.opencontainers.image.build: '1'
+        org.opencontainers.image.revision: 6ac75a7
+        org.opencontainers.image.title: DeepView ModelPack
+        org.opencontainers.image.url: 
+          https://support.deepviewml.com/hc/en-us/articles/11630435764621-ModelPack-with-Docker
+        org.opencontainers.image.vendor: Au-Zone Technologies
+        org.opencontainers.image.version: 2.0.14
     outs:
+    - path: dvclive/report.md
+      hash: md5
+      md5: 00a8b896f4d32115edf795485814cb13
+      size: 3497
+    - path: dvclive/static
+      hash: md5
+      md5: be15bad8f28ae8991936beadecf104ad.dir
+      size: 121661
+      nfiles: 4
     - path: out/best.h5
       hash: md5
-      md5: 1c71914d9f40abd7fbc4ada8b066865a
-      size: 24000056
+      md5: 142211a5784ae63221003266e603162e
+      size: 24006112
     - path: out/config.json
       hash: md5
-      md5: 92fbdcfce2bc5d9efcaf6987949405b8
-      size: 1663
+      md5: 565931c3d3e8a44545da495a165254ff
+      size: 1664
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 2d1673a776b4d27e28984e4ebd1da36b
-      size: 24000056
+      md5: 250e47c5aa96f357a7427d08b5ab8643
+      size: 24006112
   manifest:
     cmd: make manifest
     deps:
     - path: Makefile
       hash: md5
-      md5: 4627305b7313040d09ab09f18352871a
-      size: 1347
+      md5: 83b6647023c4c009c2e48d0710d45ca1
+      size: 1430
     outs:
-    - path: out/converter.manifest
+    - path: dvclive/converter.json
       hash: md5
-      md5: e5d21204a83e1c42543836d8dca0e29e
-      size: 6910
-    - path: out/modelpack.manifest
+      md5: cbcd2e89b0d2bba7d8ac267c9854f8d5
+      size: 327
+    - path: dvclive/modelpack.json
       hash: md5
-      md5: 202f573558f58e5520be241c9722187b
-      size: 7913
+      md5: df431e21966cbe631f6b485b7bc01586
+      size: 424
   deploy:
     cmd: make deploy
     deps:
     - path: Makefile
       hash: md5
-      md5: 4627305b7313040d09ab09f18352871a
-      size: 1347
+      md5: 83b6647023c4c009c2e48d0710d45ca1
+      size: 1430
     - path: dataset
       hash: md5
       md5: e1312edd2850b23c1f1f286ae7d99aaf.dir
       size: 332372378
       nfiles: 2967
+    - path: dvclive/converter.json
+      hash: md5
+      md5: cbcd2e89b0d2bba7d8ac267c9854f8d5
+      size: 327
     - path: out/best.h5
       hash: md5
-      md5: 1c71914d9f40abd7fbc4ada8b066865a
-      size: 24000056
-    - path: out/converter.manifest
-      hash: md5
-      md5: e5d21204a83e1c42543836d8dca0e29e
-      size: 6910
+      md5: 142211a5784ae63221003266e603162e
+      size: 24006112
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 2d1673a776b4d27e28984e4ebd1da36b
-      size: 24000056
+      md5: 250e47c5aa96f357a7427d08b5ab8643
+      size: 24006112
     params:
       params.yaml:
         ChannelShuffle: 0.01
@@ -119,12 +141,12 @@ stages:
         RandomFog: 0.01
         ShiftScaleRotate: 0.3
         ToGray: 0.2
-        batch_size: 10
+        batch_size: 100
         encoding_iou: 0.3
-        epochs: 2
+        epochs: 100
         exponential_decay: 0
-        focus: false
-        initial_lr: 0.001
+        focus: true
+        initial_lr: 0.01
         iou_threshold: 0.5
         letterbox: false
         objects_size: large
@@ -134,11 +156,18 @@ stages:
         task: detection
         use_power_decoder: true
         warmup_epochs: 2
-        warmup_lr: 1e-05
+        warmup_lr: 0.0001
         weighted_classification: 1.0
         weighted_localization: 1.0
         weighted_objectness: 1.0
         weights: coco
+      dvclive/converter.json:
+        org.opencontainers.image.build: ''
+        org.opencontainers.image.revision: ''
+        org.opencontainers.image.source: https://bitbucket.org/au-zone/converter
+        org.opencontainers.image.title: DeepView Converter
+        org.opencontainers.image.vendor: Au-Zone Technologies
+        org.opencontainers.image.version: ''
     outs:
     - path: out/best.rtm
       hash: md5

@@ -3,17 +3,17 @@ task: detection
 shape: 240,320,3
 use_power_decoder: true
 remove_background_class: false
-focus: false
+focus: true
 
 # Training Parameters
 weights: coco
 objects_size: large
 letterbox: false
-batch_size: 10
-epochs: 2
-initial_lr: 0.001
+batch_size: 100
+epochs: 100
+initial_lr: 0.01
 warmup_epochs: 2
-warmup_lr: 1.0e-05
+warmup_lr: 1.0e-04
 encoding_iou: 0.3
 exponential_decay: 0
 iou_threshold: 0.5
