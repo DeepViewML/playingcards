@@ -13,13 +13,13 @@ help:
 	@echo "  train:     runs the training pipeline producing the keras checkpoint"
 	@echo "  deploy:    deploys the model to an optimized deepviewrt model"
 
-train: manifest
+train: manifest .passwd
 	docker run --rm -i --gpus=all \
 		-u ${UID}:${GID} \
 		--mac-address ${HOSTID} \
 		-v ${CURDIR}:/work \
 		-v ${HOME}/.gitconfig:/etc/gitconfig \
-		-v /etc/passwd:/etc/passwd \
+		-v ${CURDIR}/.passwd:/etc/passwd \
 		${MODELPACK} \
 		--license=modelpack.lic \
 		--load=params.yaml \
@@ -54,3 +54,7 @@ manifest: modelpack converter
 
 out:
 	@mkdir -p out
+
+.passwd:
+	@getent passwd `whoami` > .passwd
+
