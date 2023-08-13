@@ -10,7 +10,6 @@ stages:
     cmd: make train
     params:
     - params.yaml:
-    - dvclive/modelpack.json:
     deps:
     - dvclive/modelpack.json
     - dvclive/converter.json
@@ -28,7 +27,6 @@ stages:
     cmd: make deploy
     params:
     - params.yaml:
-    - dvclive/converter.json:
     deps:
     - dvclive/converter.json
     - Makefile
