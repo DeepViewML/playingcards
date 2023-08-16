@@ -4,6 +4,10 @@ stages:
     cmd: python3 -m deepview.modelpack.trainer --load=params.yaml --dataset=dataset.yaml
       --dvclive=out
     deps:
+    - path: Pipfile.lock
+      hash: md5
+      md5: ab3c4699a8a862081e9842535300ecca
+      size: 189795
     - path: dataset
       hash: md5
       md5: e1312edd2850b23c1f1f286ae7d99aaf.dir
@@ -46,11 +50,11 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: b454517d8b2aa7579dfa28b298cbeb20
+      md5: 5664e8c2e0d70f26a11bd3fb46727010
       size: 24000056
     - path: out/config.json
       hash: md5
-      md5: c5b2d63fcd975f99efb64b97862268bc
+      md5: 65d43bc1151e7fa539610c2d68331bf7
       size: 1689
     - path: out/labels.txt
       hash: md5
@@ -58,14 +62,9 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: b454517d8b2aa7579dfa28b298cbeb20
+      md5: ba342bfadc69dff111bdf7c7e2153922
       size: 24000056
     - path: out/metrics.json
       hash: md5
-      md5: 2ad23de2c67702025bed3bfa196ba5b9
-      size: 321
-    - path: out/plots
-      hash: md5
-      md5: 5f5c80b93c38c6c47938f82556c8eb31.dir
-      size: 374
-      nfiles: 4
+      md5: 82d71deb7172a01ee5cde9ddcca20e8f
+      size: 510
