@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 modelpack = "==2.0.17"
+dvc = {version = "*", extras = ["s3"]}
 
 [dev-packages]
 
