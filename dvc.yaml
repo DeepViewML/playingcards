@@ -1,21 +1,11 @@
 stages:
-  manifest:
-    cmd: make manifest
-    deps:
-    - Makefile
-    outs:
-    - dvclive/modelpack.json
-    - dvclive/converter.json
   train:
-    cmd: make train
+    cmd: python3 -m deepview.modelpack.trainer --load=params.yaml --dataset=dataset.yaml --dvclive=out
     params:
     - params.yaml:
     metrics:
-    - dvclive/metrics.json 
+    - out/metrics.json
     deps:
-    - dvclive/modelpack.json
-    - dvclive/converter.json
-    - Makefile
     - dataset
     - dataset.yaml
     outs:
@@ -23,19 +13,4 @@ stages:
     - out/labels.txt
     - out/last.h5
     - out/best.h5
-    - dvclive/static
-    - dvclive/report.md
-  deploy:
-    cmd: make deploy
-    params:
-    - params.yaml:
-    deps:
-    - dvclive/converter.json
-    - Makefile
-    - dataset
-    - out/labels.txt
-    - out/last.h5
-    - out/best.h5
-    outs:
-    - out/last.rtm
-    - out/best.rtm
+    - out/plots

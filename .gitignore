@@ -1,17 +1,9 @@
-*.lic
-*.rtm
-*.h5
-*.log
-*~
-.passwd
-
-hostid.sh
-
+/venv
 /.vscode
 
-/report.md
+/.passwd
+/.local
+/hostid.sh
+/modelpack.lic
 
-/out
-/venv
 /dataset
-/dvclive
