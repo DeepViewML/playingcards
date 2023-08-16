@@ -13,4 +13,3 @@ stages:
     - out/labels.txt
     - out/last.h5
     - out/best.h5
-    - out/plots
