@@ -10,7 +10,7 @@ weights: coco
 objects_size: large
 letterbox: false
 batch_size: 100
-epochs: 100
+epochs: 10
 initial_lr: 0.01
 warmup_epochs: 2
 warmup_lr: 1.0e-04
@@ -21,6 +21,7 @@ score_threshold: 0.45
 weighted_classification: 1.0
 weighted_localization: 1.0
 weighted_objectness: 1.0
+enable_numerics_check: false
 
 # Augmentation Parameters
 ChannelShuffle: 0.01
