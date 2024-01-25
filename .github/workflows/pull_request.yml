@@ -12,26 +12,28 @@ jobs:
       AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
     steps:
     - uses: actions/checkout@v3
-    - name: modelpack license
-      uses: mobiledevops/secret-to-file-action@v1
+    - uses: actions/setup-python@v4
       with:
-        base64-encoded-secret: ${{ secrets.MODELPACK_LICENSE }}
-        filename: "modelpack.lic"
+        python-version: '3.8'
+        cache: 'pipenv'
+    - name: Install pipenv
+      run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+    - run: pipenv install
     - name: dvc pull
-      run: dvc pull
+      run: pipenv run dvc pull
     - name: dvc repro
-      run: dvc repro
+      run: pipenv run dvc repro
     - name: dvc push
-      run: dvc push -r private
+      run: pipenv run dvc push -r private
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Synchronizing DVC from GitHub Action
         file_pattern: 'dvc.lock'
     - name: publish report
       run: |
-        aws s3 cp dvclive/report.md s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/report.md
-        aws s3 cp --recursive dvclive/static s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/static
-        sed ':l s/\(([^ )]*\)[ ]/\1%20/;tl' dvclive/report.md | \
+        aws s3 cp out/report.md s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/report.md
+        aws s3 cp --recursive out/static s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/static
+        sed ':l s/\(([^ )]*\)[ ]/\1%20/;tl' out/report.md | \
         sed 's,(static/,(https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' > report.md
         cat report.md > $GITHUB_STEP_SUMMARY
     - name: debug report

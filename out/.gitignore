@@ -1,0 +1,14 @@
+/config.json
+/config.md
+/labels.txt
+/last.h5
+/best.h5
+/static
+/plots
+/report.md
+/report.html
+/metrics.json
+/events.*
+/summary.csv
+/params.yaml
+/index.html
