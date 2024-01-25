@@ -27,6 +27,7 @@ stages:
         ShiftScaleRotate: 0.3
         ToGray: 0.2
         batch_size: 100
+        compute_anchors: true
         enable_numerics_check: false
         encoding_iou: 0.3
         epochs: 10
@@ -50,11 +51,11 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: 5664e8c2e0d70f26a11bd3fb46727010
+      md5: 66325676dec54e703d2f8065eaaa4296
       size: 24000056
     - path: out/config.json
       hash: md5
-      md5: 65d43bc1151e7fa539610c2d68331bf7
+      md5: b698279a5442048b1288f1203548969a
       size: 1689
     - path: out/labels.txt
       hash: md5
@@ -62,9 +63,9 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: ba342bfadc69dff111bdf7c7e2153922
+      md5: 66325676dec54e703d2f8065eaaa4296
       size: 24000056
     - path: out/metrics.json
       hash: md5
-      md5: 82d71deb7172a01ee5cde9ddcca20e8f
-      size: 510
+      md5: 2ad23de2c67702025bed3bfa196ba5b9
+      size: 321
