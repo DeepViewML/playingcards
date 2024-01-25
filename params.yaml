@@ -22,7 +22,7 @@ weighted_classification: 1.0
 weighted_localization: 1.0
 weighted_objectness: 1.0
 enable_numerics_check: false
-
+compute_anchors: true
 # Augmentation Parameters
 ChannelShuffle: 0.01
 Flip: 0.5
