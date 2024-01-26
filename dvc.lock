@@ -6,8 +6,8 @@ stages:
     deps:
     - path: Pipfile.lock
       hash: md5
-      md5: a4b9ef37e9fbdae6dae7729c52105f35
-      size: 214931
+      md5: f86517ca22d0cfe0bd2d5b91a2282ae9
+      size: 210820
     - path: dataset
       hash: md5
       md5: f8bbfffc75405027a4f277992f51f46d.dir
@@ -30,7 +30,7 @@ stages:
         compute_anchors: true
         enable_numerics_check: false
         encoding_iou: 0.3
-        epochs: 10
+        epochs: 100
         exponential_decay: 0
         focus: false
         initial_lr: 0.01
@@ -39,10 +39,10 @@ stages:
         objects_size: large
         remove_background_class: false
         score_threshold: 0.45
-        shape: 320,320,3
+        shape: 240,320,3
         task: detection
         use_power_decoder: true
-        warmup_epochs: 2
+        warmup_epochs: 5
         warmup_lr: 0.0001
         weighted_classification: 1.0
         weighted_localization: 1.0
@@ -51,21 +51,21 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: e6fa4f682d9af6ef540987ae2cbea8d0
-      size: 24004560
+      md5: 63cf25fe8deb053a22bdb99722c1fff9
+      size: 23999744
     - path: out/config.json
       hash: md5
-      md5: 2e007c9b627577f2117d50f6dba69558
-      size: 1914
+      md5: b13c2a3c0bb77a6e8ef3a2fc81e2e68c
+      size: 1908
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 70b5143d3c0ed8668644e1cc8c42c6d2
-      size: 24004560
+      md5: ce0edc5123e7df5e33ef30385fda29f9
+      size: 23999744
     - path: out/metrics.json
       hash: md5
-      md5: e97d7c15a936a442041ccc27e8bf82ee
-      size: 378
+      md5: 7332c054b5829ba90090b43a03c6ff4d
+      size: 387

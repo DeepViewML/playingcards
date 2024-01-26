@@ -1,6 +1,7 @@
 stages:
   train:
-    cmd: python3 -m deepview.modelpack.trainer --load=params.yaml --dataset=dataset.yaml --dvclive=out
+    cmd: python3 -m deepview.modelpack.trainer --load=params.yaml --dataset=dataset.yaml
+      --dvclive=out
     params:
     - params.yaml:
     metrics:
@@ -14,3 +15,10 @@ stages:
     - out/labels.txt
     - out/last.h5
     - out/best.h5
+params:
+- out/params.yaml
+metrics:
+- out/metrics.json
+plots:
+- out/plots/metrics:
+    x: step

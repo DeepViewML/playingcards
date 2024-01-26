@@ -1,6 +1,6 @@
 # Model Parameters
 task: detection
-shape: 320,320,3
+shape: 240,320,3
 use_power_decoder: true
 remove_background_class: false
 focus: false
@@ -12,7 +12,7 @@ letterbox: false
 batch_size: 100
 epochs: 100
 initial_lr: 0.01
-warmup_epochs: 2
+warmup_epochs: 5
 warmup_lr: 1.0e-04
 encoding_iou: 0.3
 exponential_decay: 0
