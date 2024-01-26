@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-modelpack = "==2.0.17"
+modelpack = "==2.2.3"
 dvc = {version = "*", extras = ["s3"]}
 
 [dev-packages]
