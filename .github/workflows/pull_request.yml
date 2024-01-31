@@ -22,6 +22,10 @@ jobs:
       run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
     - run: pipenv install
     - run: pipenv run python --version
+    - name: Python Packages
+      run: pipenv run pip freeze
+    - name: Environment Variables
+      run: env
     - name: dvc pull
       run: pipenv run dvc pull
     - name: dvc repro
