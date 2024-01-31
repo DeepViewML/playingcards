@@ -28,7 +28,7 @@ jobs:
       run: env
     - name: dvc pull
       run: pipenv run dvc pull
-    - name: dvc repro
+    - name: dvc repro --force
       run: pipenv run dvc repro
     - name: dvc push
       run: pipenv run dvc push -r private
