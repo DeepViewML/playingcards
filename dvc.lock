@@ -51,21 +51,25 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: cc6e6620ab313f64173fcc790f676b6c
+      md5: 2ae4cfeac097dac8ed91c6bf0cbb3d62
       size: 23999744
     - path: out/config.json
       hash: md5
-      md5: ff2d69b052bc9be581eda9290d50bb21
-      size: 1908
+      md5: 429429d3c374a6ea738bdf798d03d757
+      size: 1907
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: f2be100746930a7f55af52fe6da3513f
+      md5: 0f8527687d15179156c54198c5529254
       size: 23999744
     - path: out/metrics.json
       hash: md5
-      md5: c044416d79739fe225db68a4c64617e8
-      size: 388
+      md5: 00fc42e84d79950e0fb697d5fca71770
+      size: 385
+    - path: out/report.md
+      hash: md5
+      md5: e6253f03909534746f8d91ba5f793948
+      size: 3956
