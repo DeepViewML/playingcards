@@ -16,6 +16,7 @@ stages:
     - out/last.h5
     - out/best.h5
     - out/report.md
+    - out/static
 params:
 - out/params.yaml
 metrics:

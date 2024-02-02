@@ -73,3 +73,8 @@ stages:
       hash: md5
       md5: e6253f03909534746f8d91ba5f793948
       size: 3956
+    - path: out/static
+      hash: md5
+      md5: 2528bd8a92b1c980da452cb52cfb9f7d.dir
+      size: 124196
+      nfiles: 4
