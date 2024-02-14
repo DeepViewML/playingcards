@@ -10,19 +10,26 @@ stages:
     - out/chkpts/labels.txt
     - out/chkpts/inference_model_weights.h5
     - out/chkpts/train_model_weights.h5
-  
+    - out/chkpts/inference_model
+
   zip:
     cmd: tar czf out/saved_model.tar.gz out/chkpts/inference_model
     outs:
     - out/saved_model.tar.gz
 
   convert-tensor:
-    cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples dataset/quant-samples  --num_samples 15  --labels out/chkpts/labels.txt --input_type uint8  --output_type int8  --default_shape 1,320,320,3  --quant-tensor out/chkpts/inference_model out/modelpack-playingcards-320x320-tensor.rtm
+    cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples
+      dataset/quant-samples  --num_samples 15  --labels out/chkpts/labels.txt --input_type
+      uint8  --output_type int8  --default_shape 1,320,320,3  --quant-tensor out/chkpts/inference_model
+      out/modelpack-playingcards-320x320-tensor.rtm
     outs:
     - out/modelpack-playingcards-320x320-tensor.rtm
-  
+
   convert-channel:
-    cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples dataset/quant-samples  --num_samples 15  --labels out/chkpts/labels.txt --input_type uint8  --output_type int8  --default_shape 1,320,320,3  out/chkpts/inference_model out/modelpack-playingcards-320x320-channel.rtm 
+    cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples
+      dataset/quant-samples  --num_samples 15  --labels out/chkpts/labels.txt --input_type
+      uint8  --output_type int8  --default_shape 1,320,320,3  out/chkpts/inference_model
+      out/modelpack-playingcards-320x320-channel.rtm
     outs:
     - out/modelpack-playingcards-320x320-channel.rtm
 

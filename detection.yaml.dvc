@@ -1,5 +1,5 @@
 outs:
-- md5: 0d397f545783c4b289c58ca89aedeaf0
-  size: 2375
+- md5: 1a4adde1f980bf368146cf6b5303a472
+  size: 2434
   hash: md5
   path: detection.yaml

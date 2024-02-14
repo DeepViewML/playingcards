@@ -6,21 +6,26 @@ stages:
     deps:
     - path: dataset
       hash: md5
-      md5: 081c963bfb03cff40ab62fc05249e1fb.dir
-      size: 332912802
-      nfiles: 18
+      md5: 6102dc0a639b44241dcd8fc0be86e221.dir
+      size: 332912867
+      nfiles: 19
     - path: detection.yaml
       hash: md5
-      md5: 0d397f545783c4b289c58ca89aedeaf0
-      size: 2375
+      md5: 1a4adde1f980bf368146cf6b5303a472
+      size: 2434
     outs:
     - path: out/chkpts/config.json
       hash: md5
-      md5: 918ad51dc66220cd4628f6c771b2503a
-      size: 1540
+      md5: cc47dea5d4e09d1157ef4344a26227c2
+      size: 1542
+    - path: out/chkpts/inference_model
+      hash: md5
+      md5: 5a18f7b461085184f18d50b16f9b9ef5.dir
+      size: 25591596
+      nfiles: 5
     - path: out/chkpts/inference_model_weights.h5
       hash: md5
-      md5: d0ae5465720dc76674000eadc090e20c
+      md5: e7c8a0a09da5725860fe2098b8fc6d11
       size: 23722432
     - path: out/chkpts/labels.txt
       hash: md5
@@ -28,15 +33,15 @@ stages:
       size: 65
     - path: out/chkpts/train_model_weights.h5
       hash: md5
-      md5: a9a3e59c1e5eb00c2297f1e0d06ad82e
+      md5: 757c8d7aadd0486286309de2b23d413c
       size: 23724944
   zip:
     cmd: tar czf out/saved_model.tar.gz out/chkpts/inference_model
     outs:
     - path: out/saved_model.tar.gz
       hash: md5
-      md5: faad8aea2f7cb8c2b98c9d1202657343
-      size: 22110288
+      md5: 6e17af0f789cf1526441ab960a9e2f6b
+      size: 22162235
   convert-tensor:
     cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples
       dataset/quant-samples  --num_samples 15  --labels out/chkpts/labels.txt --input_type
@@ -45,7 +50,7 @@ stages:
     outs:
     - path: out/modelpack-playingcards-320x320-tensor.rtm
       hash: md5
-      md5: c5583e4faf5b4773816798d0a3e5ca51
+      md5: 6f3b802e3992244729c32c460d3f1f3c
       size: 5942256
   convert-channel:
     cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples
@@ -55,5 +60,5 @@ stages:
     outs:
     - path: out/modelpack-playingcards-320x320-channel.rtm
       hash: md5
-      md5: bab7d726126d335c70038b0c30baef91
+      md5: ca3d63c8183ead0e69d171c46b295f12
       size: 5993312
