@@ -24,15 +24,7 @@ stages:
       out/modelpack-playingcards-320x320-tensor.rtm
     outs:
     - out/modelpack-playingcards-320x320-tensor.rtm
-
-  convert-channel:
-    cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples
-      dataset/quant-samples  --num_samples 15  --labels out/chkpts/labels.txt --input_type
-      uint8  --output_type int8  --default_shape 1,320,320,3  out/chkpts/inference_model
-      out/modelpack-playingcards-320x320-channel.rtm
-    outs:
-    - out/modelpack-playingcards-320x320-channel.rtm
-
+    
 params:
 - out/dvclive/params.yaml
 metrics:
