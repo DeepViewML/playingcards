@@ -1,0 +1,6 @@
+[core]
+    remote = public
+['remote "private"']
+    url = s3://deepviewml-datasets/playingcards
+['remote "public"']
+    url = https://datasets.deepviewml.com/playingcards
