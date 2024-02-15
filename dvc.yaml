@@ -19,12 +19,12 @@ stages:
 
   convert-tensor:
     cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples
-      dataset/quant-samples  --num_samples 15  --labels out/chkpts/labels.txt --input_type
-      uint8  --output_type int8  --default_shape 1,320,320,3  --quant-tensor out/chkpts/inference_model
-      out/modelpack-playingcards-320x320-tensor.rtm
+      dataset/quant-samples  --num_samples 15  --default_shape 1,320,320,3 --labels
+      out/chkpts/labels.txt --input_type uint8  --output_type int8  --quant-tensor
+      out/chkpts/inference_model out/modelpack-playingcards-tensor.rtm
     outs:
-    - out/modelpack-playingcards-320x320-tensor.rtm
-    
+    - out/modelpack-playingcards-tensor.rtm
+
 params:
 - out/dvclive/params.yaml
 metrics:

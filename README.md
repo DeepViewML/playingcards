@@ -58,7 +58,11 @@ or
 ```shell
 dvc metrics show
 ```
+If any other resolution needs to be tested just run the following command:
 
+```shell
+dvc exp run -S "detection.yaml:model.shape=[480,640,3]"
+```
 
 
 ## Train ModelPack from basic configuration

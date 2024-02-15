@@ -11,8 +11,8 @@ stages:
       nfiles: 19
     - path: detection.yaml
       hash: md5
-      md5: 1a4adde1f980bf368146cf6b5303a472
-      size: 2434
+      md5: 8fff30b3b5268cf04a718ec90352ec39
+      size: 2488
     outs:
     - path: out/chkpts/config.json
       hash: md5
@@ -20,12 +20,12 @@ stages:
       size: 1542
     - path: out/chkpts/inference_model
       hash: md5
-      md5: 5a18f7b461085184f18d50b16f9b9ef5.dir
+      md5: 3ba6fa0aea9ff61ce70b831358863c6d.dir
       size: 25591596
       nfiles: 5
     - path: out/chkpts/inference_model_weights.h5
       hash: md5
-      md5: e7c8a0a09da5725860fe2098b8fc6d11
+      md5: e5a2fd091f25e8f3811b6e2b563dd50b
       size: 23722432
     - path: out/chkpts/labels.txt
       hash: md5
@@ -33,7 +33,7 @@ stages:
       size: 65
     - path: out/chkpts/train_model_weights.h5
       hash: md5
-      md5: 757c8d7aadd0486286309de2b23d413c
+      md5: b5404ba7e903597dd20c4dd722ddae81
       size: 23724944
   zip:
     cmd: tar czf out/saved_model.tar.gz out/chkpts/inference_model
@@ -44,13 +44,13 @@ stages:
       size: 22162235
   convert-tensor:
     cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples
-      dataset/quant-samples  --num_samples 15  --labels out/chkpts/labels.txt --input_type
-      uint8  --output_type int8  --default_shape 1,320,320,3  --quant-tensor out/chkpts/inference_model
-      out/modelpack-playingcards-320x320-tensor.rtm
+      dataset/quant-samples  --num_samples 15  --default_shape 1,320,320,3 --labels
+      out/chkpts/labels.txt --input_type uint8  --output_type int8  --quant-tensor
+      out/chkpts/inference_model out/modelpack-playingcards-tensor.rtm
     outs:
-    - path: out/modelpack-playingcards-320x320-tensor.rtm
+    - path: out/modelpack-playingcards-tensor.rtm
       hash: md5
-      md5: 6f3b802e3992244729c32c460d3f1f3c
+      md5: 654b956c854af25d4069838bd5265782
       size: 5942256
   convert-channel:
     cmd: python -m deepview.converter --quantize  --quant_normalization unsigned --samples
@@ -62,3 +62,7 @@ stages:
       hash: md5
       md5: ca3d63c8183ead0e69d171c46b295f12
       size: 5993312
+  print:
+    cmd: echo *params:model
+  shape:
+    cmd: ls -l
