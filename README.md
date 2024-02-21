@@ -1,19 +1,51 @@
-# ModelPack - Playing Cards
+# ModelPack - Playing Cards - YoloV7
 
-This project demonstrates a ModelPack end-to-end training pipeline using the Playing Cards dataset and producing a quantized DeepViewRT model for performing card detection and classification using VisionPack on an embedded edge device.
-
-The produced DeepViewRT model can be run on the embedded edge device using the VisionPack detection samples, they come in a variety of flavours depending on the input source and result output options.
-
-- detectimg is used for running detection on the command-line using images.
-- detectgl is used for running detection with a live camera and display with overlays.
-
-# Pre-Trained
-
-We provide pre-trained model as releases to this project.  Releases are fully traceable through DVC to review versions of software, datasets, and parameters used for training.
+This projects includes a new dataset configuration file that enables training on yolov7.
+The new file is named `dataset-yolov7.yaml` and includes the dataset description
 
 # Training
 
-We provide all the configurations and datasets to re-train this model, simply follow the instructions below or review the project's GitHub Actions configuration.
+To train yolov7 on this dataset we need to run the following steps:
+
+`git clone https://github.com/WongKinYiu/yolov7.git`
+
+Once the source code is in out PC, we need to open a new terminal in yolov7 folder and clone playing cards dataset
+
+`git clone https://github.com/DeepViewML/playingcards.git`
+
+After cloning the dataset it is needed to checkout the right branch: `git checkout yolov7-dataset` and run `dvc pull` to retrieve dataset files
+The final directory structure should look like this:
+
+```bash
+.
+├── LICENSE.md
+├── README.md
+├── __pycache__
+├── cfg
+├── data
+├── deploy
+├── detect.py
+├── export.py
+├── figure
+├── hubconf.py
+├── inference
+├── models
+├── paper
+├── playingcards  # see playingcards project in here
+├── requirements.txt
+├── runs
+├── scripts
+├── test.py
+├── tools
+├── train.py
+├── train_aux.py
+├── utils
+└── yolov7.pt
+```
+
+For training the model, just run
+
+`python train.py --data playingcards\dataset-yolov7.yaml --cfg cfg\training\yolov7-tiny.yaml --weights yolov7.pt`  
 
 ## Requirements
 
