@@ -1,0 +1,8 @@
+# Training Set
+train : playingcards/dataset/images/train
+# Validation Set
+val : playingcards/dataset/images/validate
+# Number of classes
+nc : 13
+# Class names
+names : ['ace', 'nine', 'six', 'four', 'eight', 'queen', 'seven', 'king', 'ten', 'jack', 'five', 'two', 'three']
