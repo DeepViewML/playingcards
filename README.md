@@ -40,12 +40,16 @@ The final directory structure should look like this:
 ├── train.py
 ├── train_aux.py
 ├── utils
-└── yolov7.pt
+└── yolov7-tiny.pt
 ```
 
 For training the model, just run
 
-`python train.py --data playingcards\dataset-yolov7.yaml --cfg cfg\training\yolov7-tiny.yaml --weights yolov7.pt`  
+`wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-tiny.pt`
+
+and
+
+`python train.py --workers 8 --device 0 --batch-size 32 --data data/coco.yaml --img 640 640 --cfg cfg/training/yolov7.yaml --weights '' --name yolov7 --hyp data/hyp.scratch.p5.yaml`  
 
 ## Requirements
 
