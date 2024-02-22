@@ -1,0 +1,20 @@
+classes:
+- ace
+- nine
+- six
+- four
+- eight
+- queen
+- seven
+- king
+- ten
+- jack
+- five
+- two
+- three
+train:
+  annotations: dataset/train/boxes_*.arrow
+  images: dataset/train/images_*.arrow
+validation:
+  annotations: dataset/validate/boxes_*.arrow
+  images: dataset/validate/images_*.arrow
