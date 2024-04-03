@@ -18,9 +18,7 @@ stages:
     - out/static
   convert:
     cmd:
-    - deepview-converter --quantize --quant-tensor --quant_normalization unsigned
-      --samples dataset/images/quant --input_type uint8 --output-type int8 --labels
-      out/labels.txt out/best.h5 out/best.rtm
+    - deepview-converter --quantize --quant-tensor --quant_normalization unsigned --samples dataset/images/quant --input_type uint8 --output-type int8 --labels out/labels.txt --num_samples 16 out/best.h5 out/best.rtm
     deps:
     - dataset
     - dataset.yaml
@@ -30,13 +28,9 @@ stages:
     - out/best.rtm
   validate:
     cmd:
-    - deepview-validator --dataset dataset.yaml --json_out out/best.h5.results.json
-      --norm unsigned --validation_score 0.25 --detection_score 0.25 --detection_iou
-      0.5 --labels_file out/labels.txt -l 1 out/best.h5
+    - deepview-validator --dataset dataset.yaml --json_out out/best.h5.results.json --norm unsigned --validation_score 0.25 --detection_score 0.25 --detection_iou 0.5 --labels_file out/labels.txt -l 1 out/best.h5
     - jq -f metrics.json out/best.h5.results.json > out/best.h5.metrics.json
-    - deepview-validator --dataset dataset.yaml --json_out out/best.rtm.results.json
-      --norm unsigned --validation_score 0.25 --detection_score 0.25 --detection_iou
-      0.5 out/best.rtm
+    - deepview-validator --dataset dataset.yaml --json_out out/best.rtm.results.json --norm unsigned --validation_score 0.25 --detection_score 0.25 --detection_iou 0.5 out/best.rtm
     - jq -f metrics.json out/best.rtm.results.json > out/best.rtm.metrics.json
     metrics:
     - out/best.h5.metrics.json
@@ -53,5 +47,3 @@ params:
 plots:
 - out/plots/metrics:
     x: step
-metrics:
-- out/metrics.json
