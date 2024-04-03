@@ -2,6 +2,8 @@ stages:
   train:
     cmd: python3 -m deepview.modelpack.trainer --load=params.yaml --dataset=dataset.yaml
       --dvclive=out --report=md
+    metrics:
+    - out/metrics.json
     params:
     - params.yaml:
     deps:
@@ -28,17 +30,18 @@ stages:
     - out/best.rtm
   validate:
     cmd:
-    - deepview-validator --dataset dataset.yaml --json_out out/val --norm unsigned
+    - deepview-validator --dataset dataset.yaml --json_out out/best.h5.results.json --norm unsigned
       --validation_score 0.25 --detection_score 0.25 --detection_iou 0.5 --labels_file
       out/labels.txt -l 1 out/best.h5
-    - jq -f metrics.json out/val/results.json > out/val/metrics.json
-    - deepview-validator --dataset dataset.yaml --json_out out/val-rtm --norm unsigned
+    - jq -f metrics.json out/best.h5.results.json > out/best.h5.metrics.json
+    - deepview-validator --dataset dataset.yaml --json_out out/best.rtm.results.json --norm unsigned
       --validation_score 0.25 --detection_score 0.25 --detection_iou 0.5 out/best.rtm
-    - jq -f metrics.json out/val-rtm/results.json > out/val-rtm/metrics.json
+    - jq -f metrics.json out/best.rtm.results.json > out/best.rtm.metrics.json
     metrics:
-    - out/val/metrics.json
-    - out/val-rtm/metrics.json
+    - out/best.h5.metrics.json
+    - out/best.rtm.metrics.json
     deps:
+    - metrics.json
     - dataset
     - dataset.yaml
     - out/best.h5
@@ -49,5 +52,3 @@ params:
 plots:
 - out/plots/metrics:
     x: step
-metrics:
-- out/metrics.json

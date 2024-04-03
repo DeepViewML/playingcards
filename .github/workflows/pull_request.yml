@@ -30,6 +30,9 @@ jobs:
         pip install -r requirements.txt
         dvc pull
         dvc repro
+        sed -i 's/params.yaml/## Parameters/g; s/metrics.json/## Training Metrics/g' out/report.md
+        printf '\n## Validation Metrics\n' >> out/report.md
+        dvc metrics show out/best.h5.metrics.json out/best.rtm.metrics.json | sed 's,out/,,g; s,.metrics.json,,g' >> out/report.md
         dvc push -r private
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:

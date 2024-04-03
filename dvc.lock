@@ -72,13 +72,14 @@ stages:
       nfiles: 4
   validate:
     cmd:
-    - deepview-validator --dataset dataset.yaml --json_out out/val --norm unsigned
-      --validation_score 0.25 --detection_score 0.25 --detection_iou 0.5 --labels_file
-      out/labels.txt -l 1 out/best.h5
-    - jq -f metrics.json out/val/results.json > out/val/metrics.json
-    - deepview-validator --dataset dataset.yaml --json_out out/val-rtm --norm unsigned
-      --validation_score 0.25 --detection_score 0.25 --detection_iou 0.5 out/best.rtm
-    - jq -f metrics.json out/val-rtm/results.json > out/val-rtm/metrics.json
+    - deepview-validator --dataset dataset.yaml --json_out out/best.h5.results.json
+      --norm unsigned --validation_score 0.25 --detection_score 0.25 --detection_iou
+      0.5 --labels_file out/labels.txt -l 1 out/best.h5
+    - jq -f metrics.json out/best.h5.results.json > out/best.h5.metrics.json
+    - deepview-validator --dataset dataset.yaml --json_out out/best.rtm.results.json
+      --norm unsigned --validation_score 0.25 --detection_score 0.25 --detection_iou
+      0.5 out/best.rtm
+    - jq -f metrics.json out/best.rtm.results.json > out/best.rtm.metrics.json
     deps:
     - path: dataset
       hash: md5
@@ -89,6 +90,10 @@ stages:
       hash: md5
       md5: d4ac543abadc7eaf1b8276b9959e0990
       size: 327
+    - path: metrics.json
+      hash: md5
+      md5: 6c32a0a23471ab154b5681a91588df1a
+      size: 472
     - path: out/best.h5
       hash: md5
       md5: 38d00b920714c0c2bba5d6ea4e248752
@@ -102,14 +107,14 @@ stages:
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     outs:
-    - path: out/val-rtm/metrics.json
+    - path: out/best.h5.metrics.json
       hash: md5
-      md5: d26c65ddbf2b38c5341ed61c8b0cda0a
-      size: 532
-    - path: out/val/metrics.json
+      md5: f1f408de7b1c172d26bc049e0a17d5f6
+      size: 534
+    - path: out/best.rtm.metrics.json
       hash: md5
-      md5: 5e2aef4a71643d916327b69d911d4ad9
-      size: 528
+      md5: 04b03eaeac333086c16929a9726cf2de
+      size: 538
   convert:
     cmd:
     - deepview-converter --quantize --quant-tensor --quant_normalization unsigned

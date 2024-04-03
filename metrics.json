@@ -1,1 +1,19 @@
-{ "Total GT": .numgt, "Total TP", "Total FN", "Total Class FP", "Total Loc FP", "OA", "OP", "OR", "mACC", "mAP", "mAR" }
+{
+    "Total GT": .numgt,
+    "Total TP",
+    "Total FN",
+    "Total Class FP",
+    "Total Loc FP",
+    "Overall ACC": .OA,
+    "mACC 0.50": .mACC["0.5"],
+    "mACC 0.75": .mACC["0.75"],
+    "mACC 0.50-0.95": .mACC["0.5:0.95"],
+    "Overall AP": .OP,
+    "mAP 0.50": .mAP["0.5"],
+    "mAP 0.75": .mAP["0.75"],
+    "mAP 0.50-0.95": .mAP["0.5:0.95"],
+    "Overall AR": .OR,
+    "mAR 0.50": .mAR["0.5"],
+    "mAR 0.75": .mAR["0.75"],
+    "mAR 0.50-0.95": .mAR["0.5:0.95"],
+}

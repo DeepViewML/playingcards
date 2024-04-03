@@ -25,6 +25,8 @@ jobs:
           activate-environment: playingcards
           environment-file: conda.list
       - run: |
+            mamba info
+            mamba list
             pip install -r requirements.txt
             dvc pull
             dvc repro
