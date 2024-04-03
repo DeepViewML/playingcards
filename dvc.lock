@@ -47,11 +47,11 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: 4412a43c5487dacbf6ecdb387df63117
-      size: 23999752
+      md5: 38d00b920714c0c2bba5d6ea4e248752
+      size: 23999744
     - path: out/config.json
       hash: md5
-      md5: 510f7570fb347f386420be19c974dcfd
+      md5: 883aa13c19768d15935f14f45f94876e
       size: 1909
     - path: out/labels.txt
       hash: md5
@@ -59,16 +59,16 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 01d2500b6cdcd875f8acdf053feb34ae
-      size: 23999752
+      md5: 93f98d3684f29a18ca900fcec4c9e6d8
+      size: 23999744
     - path: out/report.md
       hash: md5
-      md5: 9705af0f97c9b7d1b815dfa38ecd5035
-      size: 3962
+      md5: e61883c67bca323a437e569487917749
+      size: 3959
     - path: out/static
       hash: md5
-      md5: c8c3de6e67f626bcefb4ff8f281a1015.dir
-      size: 120289
+      md5: eff89f57421045504e3980da683c2444.dir
+      size: 119673
       nfiles: 4
   validate:
     cmd:
@@ -91,8 +91,8 @@ stages:
       size: 327
     - path: out/best.h5
       hash: md5
-      md5: 4412a43c5487dacbf6ecdb387df63117
-      size: 23999752
+      md5: 38d00b920714c0c2bba5d6ea4e248752
+      size: 23999744
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
@@ -100,12 +100,12 @@ stages:
     outs:
     - path: out/val-rtm/metrics.json
       hash: md5
-      md5: 8c144b9c2fdd9fdc6548c3862508ffbb
-      size: 534
+      md5: 6bdf409f714972b123c6c3dacd051b3f
+      size: 531
     - path: out/val/metrics.json
       hash: md5
-      md5: 6195ddcca969ea131eec68d4effe7b4a
-      size: 529
+      md5: 9f30b5aa7bf24ca518075f2dbf069da4
+      size: 528
   convert:
     cmd:
     - deepview-converter --quantize --quant-tensor --quant_normalization unsigned
@@ -123,8 +123,8 @@ stages:
       size: 327
     - path: out/best.rtm
       hash: md5
-      md5: ad8fb3cdf1bdea134027950dbe842cc6
-      size: 5964268
+      md5: 71565aadde4ffcf5d2f5af7a44edb701
+      size: 5964040
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
