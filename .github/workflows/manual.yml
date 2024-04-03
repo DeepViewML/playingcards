@@ -21,12 +21,11 @@ jobs:
           channels: conda-forge
           activate-environment: playingcards
           environment-file: conda.list
-      - name: PyPi Packages
-        run: pip install -r requirements.txt
-      - name: dvc pull
-        run: dvc pull
-      - name: dvc push
-        run: dvc push -r private
+      - run: |
+            pip install -r requirements.txt
+            dvc pull
+            dvc repro
+            dvc push -r privatee
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Synchronizing DVC from GitHub Action

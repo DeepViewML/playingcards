@@ -23,10 +23,10 @@ jobs:
           channels: conda-forge
           activate-environment: playingcards
           environment-file: conda.list
-      - name: PyPi Packages
-        run: pip install -r requirements.txt
-      - name: dvc pull
-        run: dvc pull
+      - run: |
+          pip install -r requirements.txt
+          dvc pull
+          dvc repro
       - run: |
           cp out/best.h5 out/playingcards.h5
           cp out/best.rtm out/playingcards.rtm
