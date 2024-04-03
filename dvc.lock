@@ -47,28 +47,32 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: 38d00b920714c0c2bba5d6ea4e248752
-      size: 23999744
+      md5: deb81121f3e6d49a34249940370d5f7c
+      size: 23999752
     - path: out/config.json
       hash: md5
-      md5: 883aa13c19768d15935f14f45f94876e
-      size: 1909
+      md5: cfc480bc13fd7b84466a13e0f6741956
+      size: 1910
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 93f98d3684f29a18ca900fcec4c9e6d8
-      size: 23999744
+      md5: f5250499f1733424793d33e60439af1e
+      size: 23999752
+    - path: out/metrics.json
+      hash: md5
+      md5: 6c824389e7bd6d06a47628447ce3e775
+      size: 387
     - path: out/report.md
       hash: md5
-      md5: e61883c67bca323a437e569487917749
-      size: 3959
+      md5: b1391fdf3421d2d3cbdf734a91b10ed6
+      size: 3962
     - path: out/static
       hash: md5
-      md5: eff89f57421045504e3980da683c2444.dir
-      size: 119673
+      md5: 25e92d71f6f7fc03da57597d4b8c160a.dir
+      size: 121874
       nfiles: 4
   validate:
     cmd:
@@ -96,12 +100,12 @@ stages:
       size: 472
     - path: out/best.h5
       hash: md5
-      md5: 38d00b920714c0c2bba5d6ea4e248752
-      size: 23999744
+      md5: deb81121f3e6d49a34249940370d5f7c
+      size: 23999752
     - path: out/best.rtm
       hash: md5
-      md5: db45e07dcc594ad8acbf4bb1092a9a66
-      size: 5964040
+      md5: 670360aa859a9b522aea4b625d917ac0
+      size: 5964268
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
@@ -109,12 +113,12 @@ stages:
     outs:
     - path: out/best.h5.metrics.json
       hash: md5
-      md5: f1f408de7b1c172d26bc049e0a17d5f6
-      size: 534
+      md5: d797c131bca33d42d1d84db66b8a32cd
+      size: 537
     - path: out/best.rtm.metrics.json
       hash: md5
-      md5: 04b03eaeac333086c16929a9726cf2de
-      size: 538
+      md5: 9b74fe0329abb12179aa8c6914021079
+      size: 359
   convert:
     cmd:
     - deepview-converter --quantize --quant-tensor --quant_normalization unsigned
@@ -132,8 +136,8 @@ stages:
       size: 327
     - path: out/best.h5
       hash: md5
-      md5: 38d00b920714c0c2bba5d6ea4e248752
-      size: 23999744
+      md5: deb81121f3e6d49a34249940370d5f7c
+      size: 23999752
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
@@ -141,5 +145,5 @@ stages:
     outs:
     - path: out/best.rtm
       hash: md5
-      md5: db45e07dcc594ad8acbf4bb1092a9a66
-      size: 5964040
+      md5: 670360aa859a9b522aea4b625d917ac0
+      size: 5964268
