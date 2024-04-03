@@ -47,28 +47,28 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: 2a8022b080dbde8b5f89b36a5cfe9f94
-      size: 23999744
+      md5: 4412a43c5487dacbf6ecdb387df63117
+      size: 23999752
     - path: out/config.json
       hash: md5
-      md5: 96a6e438e578974dbe6cfebeb28840e7
-      size: 1914
+      md5: 510f7570fb347f386420be19c974dcfd
+      size: 1909
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: d88057ac88efeabc27f8c7456f272663
-      size: 23999744
+      md5: 01d2500b6cdcd875f8acdf053feb34ae
+      size: 23999752
     - path: out/report.md
       hash: md5
-      md5: 2327fb5fa3bd6fab872395698d90eb25
-      size: 3965
+      md5: 9705af0f97c9b7d1b815dfa38ecd5035
+      size: 3962
     - path: out/static
       hash: md5
-      md5: 856c838c292a69e94502e4c5b2e724c4.dir
-      size: 121038
+      md5: c8c3de6e67f626bcefb4ff8f281a1015.dir
+      size: 120289
       nfiles: 4
   validate:
     cmd:
@@ -91,8 +91,8 @@ stages:
       size: 327
     - path: out/best.h5
       hash: md5
-      md5: 2a8022b080dbde8b5f89b36a5cfe9f94
-      size: 23999744
+      md5: 4412a43c5487dacbf6ecdb387df63117
+      size: 23999752
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
@@ -100,12 +100,12 @@ stages:
     outs:
     - path: out/val-rtm/metrics.json
       hash: md5
-      md5: 9d9a12b1f25ce65343931c6a51c9dfc2
-      size: 532
+      md5: 8c144b9c2fdd9fdc6548c3862508ffbb
+      size: 534
     - path: out/val/metrics.json
       hash: md5
-      md5: 99e9a3e332b0661e809ea65d265ed8f4
-      size: 527
+      md5: 6195ddcca969ea131eec68d4effe7b4a
+      size: 529
   convert:
     cmd:
     - deepview-converter --quantize --quant-tensor --quant_normalization unsigned
@@ -123,7 +123,7 @@ stages:
       size: 327
     - path: out/best.rtm
       hash: md5
-      md5: 69fa206daf56a4f72ccaccb27d13090a
+      md5: ad8fb3cdf1bdea134027950dbe842cc6
       size: 5964268
     - path: out/labels.txt
       hash: md5
