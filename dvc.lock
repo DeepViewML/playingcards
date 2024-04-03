@@ -93,6 +93,10 @@ stages:
       hash: md5
       md5: 38d00b920714c0c2bba5d6ea4e248752
       size: 23999744
+    - path: out/best.rtm
+      hash: md5
+      md5: db45e07dcc594ad8acbf4bb1092a9a66
+      size: 5964040
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
@@ -100,11 +104,11 @@ stages:
     outs:
     - path: out/val-rtm/metrics.json
       hash: md5
-      md5: 6bdf409f714972b123c6c3dacd051b3f
-      size: 531
+      md5: d26c65ddbf2b38c5341ed61c8b0cda0a
+      size: 532
     - path: out/val/metrics.json
       hash: md5
-      md5: 9f30b5aa7bf24ca518075f2dbf069da4
+      md5: 5e2aef4a71643d916327b69d911d4ad9
       size: 528
   convert:
     cmd:
@@ -121,11 +125,16 @@ stages:
       hash: md5
       md5: d4ac543abadc7eaf1b8276b9959e0990
       size: 327
-    - path: out/best.rtm
+    - path: out/best.h5
       hash: md5
-      md5: 71565aadde4ffcf5d2f5af7a44edb701
-      size: 5964040
+      md5: 38d00b920714c0c2bba5d6ea4e248752
+      size: 23999744
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
+    outs:
+    - path: out/best.rtm
+      hash: md5
+      md5: db45e07dcc594ad8acbf4bb1092a9a66
+      size: 5964040

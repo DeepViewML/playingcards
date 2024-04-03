@@ -22,8 +22,10 @@ stages:
     deps:
     - dataset
     - dataset.yaml
-    - out/best.rtm
+    - out/best.h5
     - out/labels.txt
+    outs:
+    - out/best.rtm
   validate:
     cmd:
     - deepview-validator --dataset dataset.yaml --json_out out/val --norm unsigned
@@ -40,6 +42,7 @@ stages:
     - dataset
     - dataset.yaml
     - out/best.h5
+    - out/best.rtm
     - out/labels.txt
 params:
 - out/params.yaml
