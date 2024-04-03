@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: 3.8
           miniforge-version: latest
-          mamba-version: latest
+          mamba-version: 1.5.7
           use-mamba: true
           auto-update-conda: true
           channels: conda-forge
