@@ -1,8 +1,8 @@
-deepview-converter==2.6.5
-deepview-converter-rtm==2.5.29
-deepview-rt==2.6.3
-deepview-validator==3.1.3
-modelpack==2.2.8
-tflite==2.10.0
-tensorflow-hub==0.16.1
 vaal==1.4.3
+deepview-rt==2.6.3
+deepview-converter==2.6.6
+deepview-converter-rtm==2.5.29
+deepview-validator==3.1.3
+modelpack==2.2.10
+tflite==2.10.0
+enum-actions==0.1.2
