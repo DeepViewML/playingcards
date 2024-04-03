@@ -104,7 +104,7 @@ stages:
       size: 23999752
     - path: out/best.rtm
       hash: md5
-      md5: 670360aa859a9b522aea4b625d917ac0
+      md5: db512cbc5373aeb4c42fd61e0d6cc15a
       size: 5964268
     - path: out/labels.txt
       hash: md5
@@ -113,8 +113,8 @@ stages:
     outs:
     - path: out/best.h5.metrics.json
       hash: md5
-      md5: d797c131bca33d42d1d84db66b8a32cd
-      size: 537
+      md5: 801c4ac71a2e2fd638f653fbc576ac21
+      size: 536
     - path: out/best.rtm.metrics.json
       hash: md5
       md5: 9b74fe0329abb12179aa8c6914021079
@@ -123,7 +123,7 @@ stages:
     cmd:
     - deepview-converter --quantize --quant-tensor --quant_normalization unsigned
       --samples dataset/images/quant --input_type uint8 --output-type int8 --labels
-      out/labels.txt out/best.h5 out/best.rtm
+      out/labels.txt --num_samples 16 out/best.h5 out/best.rtm
     deps:
     - path: dataset
       hash: md5
@@ -145,5 +145,5 @@ stages:
     outs:
     - path: out/best.rtm
       hash: md5
-      md5: 670360aa859a9b522aea4b625d917ac0
+      md5: db512cbc5373aeb4c42fd61e0d6cc15a
       size: 5964268
