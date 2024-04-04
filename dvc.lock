@@ -47,11 +47,11 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: deb81121f3e6d49a34249940370d5f7c
+      md5: 68871d2c41b9c64801ad46ae43f60e8a
       size: 23999752
     - path: out/config.json
       hash: md5
-      md5: cfc480bc13fd7b84466a13e0f6741956
+      md5: f4676a0b716a32ac294438854669239c
       size: 1910
     - path: out/labels.txt
       hash: md5
@@ -59,20 +59,20 @@ stages:
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: f5250499f1733424793d33e60439af1e
+      md5: 3143ffa8613a1fda957e30b4cd356976
       size: 23999752
     - path: out/metrics.json
       hash: md5
-      md5: 6c824389e7bd6d06a47628447ce3e775
+      md5: e4f08126609d58bfa07629a694b7d49e
       size: 387
     - path: out/report.md
       hash: md5
-      md5: b1391fdf3421d2d3cbdf734a91b10ed6
+      md5: b0164e88c5d25f1005ec3a2c2053ede3
       size: 3962
     - path: out/static
       hash: md5
-      md5: 25e92d71f6f7fc03da57597d4b8c160a.dir
-      size: 121874
+      md5: a24203acf7f8522d85f36926ad9c21c2.dir
+      size: 119063
       nfiles: 4
   validate:
     cmd:
@@ -100,11 +100,11 @@ stages:
       size: 472
     - path: out/best.h5
       hash: md5
-      md5: deb81121f3e6d49a34249940370d5f7c
+      md5: 68871d2c41b9c64801ad46ae43f60e8a
       size: 23999752
     - path: out/best.rtm
       hash: md5
-      md5: db512cbc5373aeb4c42fd61e0d6cc15a
+      md5: 794022b045f24afd8d83808745cc5980
       size: 5964268
     - path: out/labels.txt
       hash: md5
@@ -113,8 +113,8 @@ stages:
     outs:
     - path: out/best.h5.metrics.json
       hash: md5
-      md5: 801c4ac71a2e2fd638f653fbc576ac21
-      size: 536
+      md5: 3170ea518e5f8bc91c0de1974e154f43
+      size: 537
     - path: out/best.rtm.metrics.json
       hash: md5
       md5: 9b74fe0329abb12179aa8c6914021079
@@ -136,7 +136,7 @@ stages:
       size: 327
     - path: out/best.h5
       hash: md5
-      md5: deb81121f3e6d49a34249940370d5f7c
+      md5: 68871d2c41b9c64801ad46ae43f60e8a
       size: 23999752
     - path: out/labels.txt
       hash: md5
@@ -145,5 +145,5 @@ stages:
     outs:
     - path: out/best.rtm
       hash: md5
-      md5: db512cbc5373aeb4c42fd61e0d6cc15a
+      md5: 794022b045f24afd8d83808745cc5980
       size: 5964268
