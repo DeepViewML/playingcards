@@ -23,7 +23,7 @@ jobs:
         auto-update-conda: false
         channels: conda-forge
         activate-environment: playingcards
-        environment-file: conda.list
+        environment-file: conda.lock
     - run: |
         mamba info
         mamba list
