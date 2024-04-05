@@ -12,3 +12,8 @@
 /summary.csv
 /params.yaml
 /index.html
+/best.rtm
+/best.h5.metrics.json
+/best.h5.results.json
+/best.rtm.metrics.json
+/best.rtm.results.json

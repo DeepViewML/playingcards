@@ -1,0 +1,8 @@
+vaal==1.4.3
+deepview-rt==2.6.3
+deepview-converter==2.6.7
+deepview-converter-rtm==2.5.29
+deepview-validator==3.1.4
+modelpack==2.2.11
+tflite==2.10.0
+enum-actions==0.1.2

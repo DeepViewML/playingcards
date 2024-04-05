@@ -1,12 +1,10 @@
-name: Release
+name: Manual
 
 on:
-  push:
-    tags:
-    - "v*.*"
+  workflow_dispatch:
 
 jobs:
-  release:
+  train:
     runs-on: mltrain
     defaults:
       run:
@@ -28,26 +26,25 @@ jobs:
           environment-file: conda.lock
       - name: dvc repro
         run: |
-          mamba info
-          mamba list
-          pip install -r requirements.txt
-          dvc pull
-          dvc repro
+            mamba info
+            mamba list
+            pip install -r requirements.txt
+            dvc pull
+            dvc repro
+            dvc push -r privatee
         env:
           XLA_FLAGS: --xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Synchronizing DVC from GitHub Action
+          file_pattern: 'dvc.lock'
       - run: |
           cp out/best.h5 out/playingcards.h5
           cp out/best.rtm out/playingcards.rtm
-      - name: report
+      - name: publish report
         run: |
           aws s3 cp out/report.md s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/report.md
           aws s3 cp --recursive out/static s3://deepviewml-datasets/${{ github.event.repository.name }}/reports/${{ github.sha }}/static
           sed ':l s/\(([^ )]*\)[ ]/\1%20/;tl' out/report.md | \
           sed 's,(static/,(https://datasets.deepviewml.com/${{ github.event.repository.name }}/reports/${{ github.sha }}/static/,' > report.md
           cat report.md > $GITHUB_STEP_SUMMARY
-      - uses: softprops/action-gh-release@v1
-        with:
-          body_path: report.md
-          files: |
-            out/playingcards.h5
-            out/playingcards.rtm

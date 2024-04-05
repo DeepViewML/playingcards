@@ -1,15 +1,15 @@
 stages:
   train:
-    cmd: python3 -m deepview.modelpack.trainer --load=params.yaml --dataset=dataset.yaml
+    cmd:
+    - python3 -m deepview.modelpack.trainer --load=params.yaml --dataset=dataset.yaml
       --dvclive=out --report=md
-    params:
-    - params.yaml:
     metrics:
     - out/metrics.json
+    params:
+    - params.yaml:
     deps:
     - dataset
     - dataset.yaml
-    - Pipfile.lock
     outs:
     - out/config.json
     - out/labels.txt
@@ -17,10 +17,42 @@ stages:
     - out/best.h5
     - out/report.md
     - out/static
+  convert:
+    cmd:
+    - deepview-converter --quantize --quant-tensor --quant_normalization unsigned
+      --samples dataset/images/quant --input_type uint8 --output-type int8 --labels
+      out/labels.txt --num_samples 16 out/best.h5 out/best.rtm
+    deps:
+    - dataset
+    - dataset.yaml
+    - out/best.h5
+    - out/labels.txt
+    outs:
+    - out/best.rtm
+  validate:
+    cmd:
+    - deepview-validator --dataset dataset.yaml --json_out out/best.h5.results.json
+      --norm unsigned --validation_score 0.25 --detection_score 0.25 --detection_iou
+      0.5 --labels_file out/labels.txt -l 1 out/best.h5
+    - jq -f metrics.json out/best.h5.results.json > out/best.h5.metrics.json
+    - deepview-validator --dataset dataset.yaml --json_out out/best.rtm.results.json
+      --norm unsigned --validation_score 0.25 --detection_score 0.25 --detection_iou
+      0.5 out/best.rtm
+    - jq -f metrics.json out/best.rtm.results.json > out/best.rtm.metrics.json
+    metrics:
+    - out/best.h5.metrics.json
+    - out/best.rtm.metrics.json
+    deps:
+    - metrics.json
+    - dataset
+    - dataset.yaml
+    - out/best.h5
+    - out/best.rtm
+    - out/labels.txt
+plots:
+- out/plots/metrics:
+    x: step
 params:
 - out/params.yaml
 metrics:
 - out/metrics.json
-plots:
-- out/plots/metrics:
-    x: step
