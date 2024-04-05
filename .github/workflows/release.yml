@@ -26,12 +26,15 @@ jobs:
           channels: conda-forge
           activate-environment: playingcards
           environment-file: conda.lock
-      - run: |
+      - name: dvc repro
+        run: |
           mamba info
           mamba list
           pip install -r requirements.txt
           dvc pull
           dvc repro
+        env:
+          XLA_FLAGS: --xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib
       - run: |
           cp out/best.h5 out/playingcards.h5
           cp out/best.rtm out/playingcards.rtm

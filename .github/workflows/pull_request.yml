@@ -24,7 +24,8 @@ jobs:
         channels: conda-forge
         activate-environment: playingcards
         environment-file: conda.lock
-    - run: |
+    - name: dvc repro
+      run: |
         mamba info
         mamba list
         pip install -r requirements.txt
@@ -34,6 +35,8 @@ jobs:
         printf '\n## Validation Metrics\n' >> out/report.md
         dvc metrics show --md out/best.h5.metrics.json out/best.rtm.metrics.json | sed 's,out/,,g; s,.metrics.json,,g' >> out/report.md
         dvc push -r private
+      env:
+        XLA_FLAGS: --xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Synchronizing DVC from GitHub Action
