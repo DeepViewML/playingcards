@@ -37,6 +37,7 @@ stages:
         remove_background_class: false
         score_threshold: 0.45
         shape: 240,320,3
+        skip_validation: 10
         task: detection
         use_power_decoder: true
         warmup_epochs: 5
@@ -48,32 +49,32 @@ stages:
     outs:
     - path: out/best.h5
       hash: md5
-      md5: cfca2c2ffe78e0f9456354870919ae49
+      md5: 51c9b7a7f9a023c00b6a948c03b077f9
       size: 24008656
     - path: out/config.json
       hash: md5
-      md5: 5db264bea98445a3f3b177cc663c7baf
-      size: 1911
+      md5: ec66e87870a319532c3f9877a45025d0
+      size: 1933
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
       size: 76
     - path: out/last.h5
       hash: md5
-      md5: 0bbc55a46b7586f43a645bd38cf2e833
+      md5: ab12843aca251f33471351558ea36875
       size: 24008656
     - path: out/metrics.json
       hash: md5
-      md5: 066937e7686248dda225c5e8bc122e4c
+      md5: 8d9aabcc5d28bf3f042d9715ebda7159
       size: 387
     - path: out/report.md
       hash: md5
-      md5: f006e87e97861df640b648d69cc75c6c
-      size: 3965
+      md5: b83dea5756900ff7e0f5b849f0f0d827
+      size: 3998
     - path: out/static
       hash: md5
-      md5: d70e7a4db05190f288d734e4b5f28ae2.dir
-      size: 107674
+      md5: 1c0367c17f9618fff28bea05eaac10d8.dir
+      size: 85403
       nfiles: 4
   validate:
     cmd:
@@ -101,12 +102,12 @@ stages:
       size: 472
     - path: out/best.h5
       hash: md5
-      md5: cfca2c2ffe78e0f9456354870919ae49
+      md5: 51c9b7a7f9a023c00b6a948c03b077f9
       size: 24008656
     - path: out/best.rtm
       hash: md5
-      md5: e95466fa3482c0cd9d17da21524d40be
-      size: 5964232
+      md5: 5608830f52298db0b8dc59eda3a059a2
+      size: 5964168
     - path: out/labels.txt
       hash: md5
       md5: 42022d602e77478b53ac78ad1d0cbcfc
@@ -114,17 +115,18 @@ stages:
     outs:
     - path: out/best.h5.metrics.json
       hash: md5
-      md5: 5672daa9fa846ca31569cf8bbbace359
-      size: 535
+      md5: 3d5fc448a62bf265d6f2a8ad55bf4200
+      size: 538
     - path: out/best.rtm.metrics.json
       hash: md5
-      md5: 6de1d5ff8d463241a6f2564d9e7ed84b
-      size: 510
+      md5: ddac32d165a07c18cdfb88b7e15fc2f6
+      size: 537
   convert:
     cmd:
-    - deepview-converter --quantize --quant-tensor --quant_normalization unsigned
-      --samples dataset/images/quant --input_type uint8 --output-type int8 --labels
-      out/labels.txt --num_samples 16 out/best.h5 out/best.rtm
+    - docker run -u $(id -u):$(id -g) -it --rm -v $PWD:/work deepview/converter:2.6.8
+      --quantize --quant-tensor --quant_normalization unsigned --samples dataset/images/quant
+      --input_type uint8 --output-type int8 --labels out/labels.txt --num_samples
+      16 out/best.h5 out/best.rtm
     deps:
     - path: dataset
       hash: md5
@@ -137,7 +139,7 @@ stages:
       size: 327
     - path: out/best.h5
       hash: md5
-      md5: cfca2c2ffe78e0f9456354870919ae49
+      md5: 51c9b7a7f9a023c00b6a948c03b077f9
       size: 24008656
     - path: out/labels.txt
       hash: md5
@@ -146,5 +148,5 @@ stages:
     outs:
     - path: out/best.rtm
       hash: md5
-      md5: e95466fa3482c0cd9d17da21524d40be
-      size: 5964232
+      md5: 5608830f52298db0b8dc59eda3a059a2
+      size: 5964168

@@ -23,6 +23,7 @@ weighted_localization: 1.0
 weighted_objectness: 1.0
 enable_numerics_check: false
 compute_anchors: true
+skip_validation: 10
 
 # Augmentation Parameters
 ChannelShuffle: 0.01

@@ -19,9 +19,10 @@ stages:
     - out/static
   convert:
     cmd:
-    - deepview-converter --quantize --quant-tensor --quant_normalization unsigned
-      --samples dataset/images/quant --input_type uint8 --output-type int8 --labels
-      out/labels.txt --num_samples 16 out/best.h5 out/best.rtm
+    - docker run -u $(id -u):$(id -g) -it --rm -v $PWD:/work deepview/converter:2.6.8
+      --quantize --quant-tensor --quant_normalization unsigned --samples dataset/images/quant
+      --input_type uint8 --output-type int8 --labels out/labels.txt --num_samples
+      16 out/best.h5 out/best.rtm
     deps:
     - dataset
     - dataset.yaml
